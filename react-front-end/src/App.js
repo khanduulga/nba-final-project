@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import PersistentDrawerRight from './components/navbar'
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +14,7 @@ class App extends Component {
   }
 
   fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+    axios.get('/api/shots?name=lebron') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
       console.log(response.data) // The entire response from the Rails API
@@ -26,10 +29,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
+        <PersistentDrawerRight />
+        <h1>Find a Player</h1>
+        <div class="search">
+          <div style={{marginRight: 1 + 'em'}}>
+          <TextField
+              label="Search"
+              variant="outlined"
+
+            />
+          </div>
+          <Button variant="contained" style={{backgroundColor: '#311b92', color: 'white'}}  href="">
+          Select
+        </Button>  
+       </div>      
       </div>
     );
   }
