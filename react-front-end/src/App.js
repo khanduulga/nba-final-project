@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import PersistentDrawerRight from './components/navbar'
+import Navbar from './components/navbar'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -29,7 +29,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PersistentDrawerRight />
+        <Navbar />
         <h1>Find a Player</h1>
         <div class="search">
           <div style={{marginRight: 1 + 'em'}}>

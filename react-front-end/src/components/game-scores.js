@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
+//axios.get inside setInterval
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
