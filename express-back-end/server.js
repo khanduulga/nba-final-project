@@ -5,7 +5,8 @@ const PORT = 8080;
 const lebron_shots = require('./data/lebron_shots.json')
 const curry_shots = require('./data/curry_shots.json')
 const lebron_stats = require('./data/lebron_stats.json')
-const curry_shots = require('./data/curry_stats.json')
+const curry_stats = require('./data/curry_stats.json')
+const league_leaders = require('./data/league_leaders.json')
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -26,6 +27,9 @@ App.get('/api/stats', (req, res) =>
   } else if (req.query.name === "curry") {
     res.json(curry_stats)
   }}
+)
+App.get('/api/leaders', (req, res) =>
+  res.json(league_leaders)
 )
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
