@@ -22,6 +22,8 @@ import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 // CSS
 import './navbar.css'
+// Game Scores Dashboard
+import GameScores from './game-scores.js';
 
 const drawerWidth = 208;
 
@@ -152,9 +154,7 @@ export default function PersistentDrawerRight() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Typography paragraph>
-          Game Scores Dashboard goes here.
-        </Typography>
+        <GameScores />
       </main>
       <Drawer
         anchor="right"
