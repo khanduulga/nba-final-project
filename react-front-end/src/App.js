@@ -14,10 +14,10 @@ class App extends Component {
   }
 
   fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+    axios.get('/api/shots?name=lebron') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
-      console.log(response.data) // The entire response from the Rails API
+      console.log(response.data) // The entire response from the API
 
       console.log(response.data.message) // Just the message
       this.setState({
@@ -42,7 +42,7 @@ class App extends Component {
           <Button variant="contained" style={{backgroundColor: '#311b92', color: 'white'}}  href="">
           Select
         </Button>  
-       </div>      
+       </div>
       </div>
     );
   }
