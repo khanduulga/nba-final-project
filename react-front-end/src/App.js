@@ -2,8 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import Navbar from './components/navbar'
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import Search from './components/search'
+import Leaders from './components/leaders'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch
+} from "react-router-dom";
 
 
 
@@ -58,22 +66,21 @@ export default function App(props) {
   
 
   return (
-    <div className="App">
-        <Navbar />
-        <h1>Find a Player</h1>
-        <div className="search">
-          <div style={{marginRight: 1 + 'em'}}>
-          <TextField
-              label="Search"
-              variant="outlined"
-
-            />
-          </div>
-          <Button variant="contained" style={{backgroundColor: '#311b92', color: 'white'}}  href="">
-          Select
-        </Button>  
-       </div>
-    </div>
+    <Router>
+      <div>
+        <div className="App">
+          <Navbar />
+        </div>
+        <Switch>
+          <Route exact path="/">
+            <Search/>
+          </Route>
+          <Route path="/leaders">
+            <Leaders />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

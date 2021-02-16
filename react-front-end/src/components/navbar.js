@@ -24,6 +24,10 @@ import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import './navbar.css'
 // Game Scores Dashboard
 import GameScores from './game-scores.js';
+import {
+  Link
+} from "react-router-dom";
+
 
 const drawerWidth = 208;
 
@@ -178,10 +182,12 @@ export default function Navbar() {
         <Divider />
         <List>
           {['Players', 'Teams'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <AccountBoxIcon /> : <SportsBasketballIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+            <Link to='/Leaders'>
+              <ListItem button key={text}>
+                <ListItemIcon>{index % 2 === 0 ? <AccountBoxIcon /> : <SportsBasketballIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            </Link>
           ))}
         </List>
         <Divider />
