@@ -51,7 +51,7 @@ export default function GameScores() {
   return (
     <div className={classes.root}>
       <Grid container spacing={1}>
-        <Grid container item xs={24} spacing={1}>
+        <Grid container item xs={12} spacing={1}>
           <FormRow />
         </Grid>
       </Grid>

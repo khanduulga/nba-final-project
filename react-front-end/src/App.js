@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 
+
 export default function App(props) {
 
   const [state, setState] = useState({
@@ -13,7 +14,8 @@ export default function App(props) {
     curry_shots: {},
     lebron_stats: {},
     curry_stats: {},
-    leaders: {}
+    leaders: {},
+    players: {}
   })
 
   useEffect(() => {
@@ -50,15 +52,16 @@ export default function App(props) {
     curry_shots_array.push(curry_shots_object[s])
   }
   
+  
 
-  console.log(curry_shots_array[4])
+  console.log(state.leaders)
   
 
   return (
     <div className="App">
         <Navbar />
         <h1>Find a Player</h1>
-        <div class="search">
+        <div className="search">
           <div style={{marginRight: 1 + 'em'}}>
           <TextField
               label="Search"
