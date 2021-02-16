@@ -51,14 +51,11 @@ export default function App(props) {
   }
   
 
-  console.log(curry_shots_array[4])
-  
-
   return (
     <div className="App">
         <Navbar />
         <h1>Find a Player</h1>
-        <div class="search">
+        <div className="search">
           <div style={{marginRight: 1 + 'em'}}>
           <TextField
               label="Search"
