@@ -16,8 +16,8 @@ export default function Leaders(props) {
 
   const columns = [
     { field: 'id', hide: true},
-    { field: 'RANK', headerName: 'Rank', width: 75 },
-    { field: 'PLAYER', headerName: 'Name', width: 130 },
+    { field: 'RANK', headerName: 'Rank', width: 65 },
+    { field: 'PLAYER', headerName: 'Name', width: 115 },
     { field: 'TEAM', headerName: 'Team', width: 75 },
     {
       field: 'GP',
@@ -45,7 +45,7 @@ export default function Leaders(props) {
     },
     {
       field: 'FG_PCT',
-      headerName: 'FG_PCT',
+      headerName: 'FGPCT',
       type: 'number',
       width: 75,
     },
@@ -59,13 +59,13 @@ export default function Leaders(props) {
       field: 'FG3A',
       headerName: 'FG3A',
       type: 'number',
-      width: 75,
+      width: 80,
     },
     {
       field: 'FG3_PCT',
-      headerName: 'FG3_PCT',
+      headerName: 'FG3PCT',
       type: 'number',
-      width: 75,
+      width: 85,
     },
     {
       field: 'FTM',
@@ -81,9 +81,9 @@ export default function Leaders(props) {
     },
     {
       field: 'FT_PCT',
-      headerName: 'FG_PCT',
+      headerName: 'FGPCT',
       type: 'number',
-      width: 75,
+      width: 80,
     },
     {
       field: 'OREB',
@@ -165,7 +165,7 @@ export default function Leaders(props) {
   return (
     <div style={{ height: 750, width: '100%' }}>
       <MuiThemeProvider theme={theme}>
-        <DataGrid rows={playersArray} columns={columns} pageSize={20} checkboxSelection  />
+        <DataGrid rows={playersArray} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} sortingOrder={['desc']}/>
       </MuiThemeProvider>
     </div>
   );
