@@ -88,6 +88,9 @@ export default function App(props) {
               leaders={state.leaders}
             />
           </Route>
+          <Route>
+            <ShotChart />
+          </Route>
         </Switch>
       </div>
     </Router>
