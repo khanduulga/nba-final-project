@@ -181,23 +181,25 @@ export default function Navbar() {
         </div>
         <Divider />
         <List>
-          {['Players', 'Teams'].map((text, index) => (
-            <Link to='/Leaders'>
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <AccountBoxIcon /> : <SportsBasketballIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            </Link>
-          ))}
+          <ListItem button key={'Players'}>
+            <ListItemIcon><AccountBoxIcon /></ListItemIcon>
+            <ListItemText primary={'Players'} />
+          </ListItem>
+          <ListItem button key={'Teams'}>
+            <ListItemIcon><SportsBasketballIcon /></ListItemIcon>
+            <ListItemText primary={'Teams'} />
+          </ListItem>
         </List>
         <Divider />
         <List>
-          {['Leaders', 'Compare'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <EqualizerIcon /> : <CompareArrowsIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button key={'Leaders'}>
+            <ListItemIcon><EqualizerIcon /></ListItemIcon>
+            <ListItemText primary={'Leaders'} />
+          </ListItem>
+          <ListItem button key={'Compare'}>
+              <ListItemIcon><CompareArrowsIcon /></ListItemIcon>
+              <ListItemText primary={'Compare'} />
+          </ListItem>
         </List>
       </Drawer>
     </div>
