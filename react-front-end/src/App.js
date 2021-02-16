@@ -17,13 +17,15 @@ import {
 
 export default function App(props) {
 
+  const [loading, setLoading] = useState(true)
+
   const [state, setState] = useState({
-    lebron_shots: {},
-    curry_shots: {},
-    lebron_stats: {},
-    curry_stats: {},
-    leaders: {},
-    players: {}
+    lebron_shots: [],
+    curry_shots: [],
+    lebron_stats: [],
+    curry_stats: [],
+    leaders: [],
+    players: []
   })
 
   useEffect(() => {
@@ -49,12 +51,13 @@ export default function App(props) {
         curry_stats: all[3].data,
         leaders: all[4].data
       }))
-
+      setLoading(false)
     })
   }, [])
 
   let curry_shots_object = state.curry_shots.shots
   let curry_shots_array = []
+
 
   for (let s in curry_shots_object) {
     curry_shots_array.push(curry_shots_object[s])
@@ -62,9 +65,11 @@ export default function App(props) {
   
   
 
-  console.log(state.leaders)
   
-
+  
+  if (loading){
+    return (null)
+  }
   return (
     <Router>
       <div>
@@ -76,7 +81,9 @@ export default function App(props) {
             <Search/>
           </Route>
           <Route path="/leaders">
-            <Leaders />
+            <Leaders 
+              leaders={state.leaders}
+            />
           </Route>
         </Switch>
       </div>
