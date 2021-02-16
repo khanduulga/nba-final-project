@@ -1,0 +1,10 @@
+svg text {
+  display: none;
+}
+
+svg g rect {
+  display: none;
+}
+
+svg g:hover text { display: block;}
+svg g:hover rect { display: block;}
