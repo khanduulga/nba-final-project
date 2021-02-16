@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import {
   createMuiTheme,
   MuiThemeProvider
 } from "@material-ui/core/styles";
+import axios from 'axios';
+
+
 
 
 
 export default function Leaders(props) {
 
-  console.log(props.leaders.resultSet);
+  console.log('looping?')
+
+  const [leagueLeaders, setleagueLeaders] = useState({})
+
+  useEffect(() => {axios.get('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=250&sort=general.avgMinutes%3Adesc')
+  .then((response) => {
+    setleagueLeaders(prev => ({
+      ...prev,
+      leagueLeaders: response.data
+    }))
+  })}, [])
+
+
+
+  // console.log(props.leaders.resultSet);
   const headers = props.leaders.resultSet.headers;
   const players = props.leaders.resultSet.rowSet;
   headers[0] = 'id';
@@ -153,7 +170,7 @@ export default function Leaders(props) {
     playersArray.push(playerObject);
   })
 
-  console.log(playersArray)
+  // console.log(playersArray)
 
   const theme = createMuiTheme({
     typography: {
