@@ -71,7 +71,7 @@ export default function App(props) {
           Select
         </Button>  
        </div>
-       <ShotChart />
+       <ShotChart/>
     </div>
   );
 }
