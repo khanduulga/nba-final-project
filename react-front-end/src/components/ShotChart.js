@@ -140,7 +140,7 @@ export default function ShotChart(props) {
       width="750"
       overflow="visible"
     >
-      {/* court setup */}
+      {/* court setup
       <circle cx="375" cy="71.25" r="11.96808510638298" fill="none" stroke="black"></circle>
       <line x1="330" x2="420.00000000000006" y1="60" y2="60" stroke="black"></line>
       <rect x="255.00000000000003" y="0" width="240" height="285" fill="none" stroke="black"></rect>
@@ -153,7 +153,9 @@ export default function ShotChart(props) {
       <path d="M330.1714479312211,136.76149164147395A357.375,357.375,0,0,1,-330.1714479312211,136.76149164147384A357.375,357.375,0,0,0,330.1714479312211,136.76149164147395Z" stroke="black" transform="translate(375,71.25)"></path>
       <path d="M-30,-3.67394039744206e-15A30,30,0,1,1,30,0A30,30,0,1,0,-30,-3.67394039744206e-15Z" stroke="black" transform="translate(375,705)"></path>
       <path d="M-90,-1.1021821192326179e-14A90,90,0,1,1,90,0A90,90,0,1,0,-90,-1.1021821192326179e-14Z" stroke="black" transform="translate(375,705)"></path>
-      <rect x="0" y="0" width="750" height="705" fill="none" stroke="black"></rect>
+      <rect x="0" y="0" width="750" height="705" fill="none" stroke="black"></rect> */}
+
+      <image href="/home/khanduulga/lighthouse/nba-final-project/react-front-end/public/images/court.png" height="705" width="750"></image>
       {shots}
     </svg>
   )
