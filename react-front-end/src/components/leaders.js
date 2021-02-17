@@ -177,7 +177,7 @@ export default function Leaders(props) {
   
 
   return (
-    <div style={{ height: 750, width: '96%' }}>
+    <div style={{ height: 750, width: '96%', paddingLeft: '15px', paddingBottom: '15px'}}>
       <h2>League Leaders</h2>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={playersArray} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />

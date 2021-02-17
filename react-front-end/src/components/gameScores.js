@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: -10,
   },
   paper: {
-    maxWidth: 220,
+    width: '14em',
     margin: `${theme.spacing(1)}px auto`,
     padding: theme.spacing(2),
     backgroundColor: '#949499',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '5px',
   },
   paperAlt: {
-    maxWidth: 200,
+    width: 100,
     margin: `${theme.spacing(1)}px auto`,
     padding: theme.spacing(1),
     backgroundColor: '#242429',
