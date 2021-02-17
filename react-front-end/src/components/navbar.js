@@ -181,10 +181,12 @@ export default function Navbar() {
         </div>
         <Divider />
         <List>
-          <ListItem button key={'Players'}>
-            <ListItemIcon><AccountBoxIcon /></ListItemIcon>
-            <ListItemText primary={'Players'} />
-          </ListItem>
+          <Link to='/player'>
+            <ListItem button key={'Players'}>
+              <ListItemIcon><AccountBoxIcon /></ListItemIcon>
+              <ListItemText primary={'Players'} />
+            </ListItem>
+          </Link>
           <ListItem button key={'Teams'}>
             <ListItemIcon><SportsBasketballIcon /></ListItemIcon>
             <ListItemText primary={'Teams'} />
@@ -192,10 +194,12 @@ export default function Navbar() {
         </List>
         <Divider />
         <List>
-          <ListItem button key={'Leaders'}>
-            <ListItemIcon><EqualizerIcon /></ListItemIcon>
-            <ListItemText primary={'Leaders'} />
-          </ListItem>
+          <Link to='/leaders'>
+            <ListItem button key={'Leaders'}>
+              <ListItemIcon><EqualizerIcon /></ListItemIcon>
+              <ListItemText primary={'Leaders'} />
+            </ListItem>
+          </Link>
           <ListItem button key={'Compare'}>
               <ListItemIcon><CompareArrowsIcon /></ListItemIcon>
               <ListItemText primary={'Compare'} />

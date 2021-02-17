@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 
 import ShotChart from './components/ShotChart'
+import Player from './components/player'
 
 
 export default function App(props) {
@@ -85,6 +86,9 @@ export default function App(props) {
           </Route>
           <Route path="/shotchart">
             <ShotChart />
+          </Route>
+          <Route path='/player'>
+            <Player />
           </Route>
         </Switch>
       </div>
