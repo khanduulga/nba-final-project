@@ -155,7 +155,7 @@ export default function ShotChart(props) {
       <path d="M-90,-1.1021821192326179e-14A90,90,0,1,1,90,0A90,90,0,1,0,-90,-1.1021821192326179e-14Z" stroke="black" transform="translate(375,705)"></path>
       <rect x="0" y="0" width="750" height="705" fill="none" stroke="black"></rect> */}
 
-      <image href="/home/khanduulga/lighthouse/nba-final-project/react-front-end/public/images/court.png" height="705" width="750"></image>
+      <image href="https://cdn.discordapp.com/attachments/809499216354607188/810973869862158346/basketball-court-floor-clipart-Sport-Basketball-court-color-Template.png" height="705" width="750"></image>
       {shots}
     </svg>
   )
