@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ShotChart from './ShotChart'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch
-} from "react-router-dom";
 import { DataGrid } from '@material-ui/data-grid';
 import {
   createMuiTheme,
@@ -70,7 +61,7 @@ export default function Player(props) {
   return (
     <div style={{ height: 750, width: '40%' }}>
       <MuiThemeProvider theme={theme}>
-        <DataGrid rows={rows} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} sortModel={[
+        <DataGrid rows={rows} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
           {
             field: 'displayName', sort: 'asc'
           }

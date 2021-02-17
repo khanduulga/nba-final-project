@@ -182,7 +182,7 @@ export default function Leaders(props) {
   return (
     <div style={{ height: 750, width: '95%' }}>
       <MuiThemeProvider theme={theme}>
-        <DataGrid rows={playersArray} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
+        <DataGrid rows={playersArray} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} />
       </MuiThemeProvider>
     </div>
   );
