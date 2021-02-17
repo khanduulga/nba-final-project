@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ShotChart from './ShotChart'
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Link,
   useParams,
   useRouteMatch
 } from "react-router-dom";
+import './player.scss'
+import PlayerOverview from './player-overview'
 
 export default function Player(props) {
 
@@ -47,23 +48,65 @@ export default function Player(props) {
 
 
 
-
   if(loading) {
     return(null)
   }
-
-  console.log(state.player_overview_all, state.player_overview_stats, state.player_stats, state.player_game_log)
+  console.log(state.player_overview_stats.nextGame)
 
   return(
     <div>
-      <h1>{state.player_overview_all.athlete.displayName}</h1>
-      <img src={`${state.player_overview_all.athlete.headshot.href}`} style={{ width: '20em' }}/>
+      <div className="player-header">
+        <img src={`${state.player_overview_all.athlete.headshot.href}`} style={{ width: '20em' }}/>
+        <table className="player-info">
+          <tbody>
+            <tr>
+              <th colSpan="2" className="player-name">{state.player_overview_all.athlete.displayName}</th>
+            </tr>
+            <tr>
+              <th>Team:</th>
+              <td>{state.player_overview_all.athlete.team.displayName}</td>
+            </tr>
+            <tr>
+              <th>Number:</th>
+              <td>{state.player_overview_all.athlete.displayJersey}</td>
+            </tr>
+            <tr>
+              <th>Position:</th>
+              <td>{state.player_overview_all.athlete.position.displayName}</td>
+            </tr>
+            <tr>
+              <th>Height/Weight:</th>
+              <td>{state.player_overview_all.athlete.displayHeight}/ {state.player_overview_all.athlete.displayWeight}</td>
+            </tr>
+            <tr>
+              <th>DOB (age):</th>
+              <td>{state.player_overview_all.athlete.displayDOB} ({state.player_overview_all.athlete.age})</td>
+            </tr>
+            <tr>
+              <th>Draft Info</th>
+              <td>2012: Rd 1, Pk 3 (WSH)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr/>
+      <div className="link-row">
+        <Link to={`${url}`}>Overview</Link>
+        <Link>Stats</Link>
+        <Link>Game Log</Link>
+        <Link>News</Link>
+        <Link to={`${url}/shotchart`}>Shot Chart</Link>
+      </div>
+      <hr/>
 
-      <Link to={`${url}/shotchart`}>player shot chart</Link>
+
 
       <Switch>
         <Route exact path={path}>
-          <h3>Player stats</h3>
+          <PlayerOverview
+            stats={state.player_overview_stats.statistics}
+            nextGame={state.player_overview_stats.nextGame}
+          />
         </Route>
         <Route path={`${path}/shotchart`}>
           <ShotChart />
