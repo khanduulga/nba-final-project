@@ -8,13 +8,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useParams,
-  useRouteMatch
+  // Link,
+  // useParams,
+  // useRouteMatch
 } from "react-router-dom";
 
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+// import TextField from '@material-ui/core/TextField';
+// import Button from '@material-ui/core/Button';
 import ShotChart from './components/ShotChart'
 
 
@@ -88,7 +88,7 @@ export default function App(props) {
               leaders={state.leaders}
             />
           </Route>
-          <Route>
+          <Route path="/shotchart">
             <ShotChart />
           </Route>
         </Switch>

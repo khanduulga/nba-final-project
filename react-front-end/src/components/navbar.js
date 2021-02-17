@@ -15,6 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Paper from '@material-ui/core/Paper';
 // Buttons
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
@@ -95,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(2.5),
   },
   toolbar: {
     display: 'flex',
@@ -112,12 +113,38 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginRight: 0,
   },
+  home: {
+    textDecoration: 'none',
+    color: 'white'
+  },
+  paperAlt: {
+    maxWidth: 200,
+    margin: `${theme.spacing(1)}px auto`,
+    padding: theme.spacing(2),
+    backgroundColor: '#242429',
+    color: 'gold',
+    textEmphasis: 'bold',
+    fontSize: 18,
+    border: 'solid white',
+    borderWidth: '1px',
+    marginRight: '18px'
+  },
 }));
 
 export default function Navbar() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  //Date
+  const d = new Date();
+  const dateString = JSON.stringify(d);
+  const months = {'01': "Jan", '02': "Feb", '03': "Mar", '04': "Apr", '05': "May", '06': "Jun", '07': "Jul", '08': "Aug", '09': "Sep", '10': "Oct", '11': "Nov", '12': "Dec",}
+  const currentDay = dateString.substring(9,11);
+  const currentYear = dateString.substring(1,5);
+  const monthString = dateString.substring(6,8);
+  const currentMonth = months[monthString];
+
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -138,9 +165,11 @@ export default function Navbar() {
       >
         <Toolbar>
           <a href={"http://localhost:3000/"}><img src={"images/logo.png"} alt="logo" /></a>
-          <h2>NBA Dashboard</h2>
+          <a href={"http://localhost:3000/"} className={classes.home}><h2>NBA Dashboard</h2></a>
           <Typography variant="h6" noWrap className={classes.title}>
+            
           </Typography>
+          <Paper className={classes.paperAlt}> {currentMonth} {currentDay}, {currentYear}</Paper>
           <IconButton
             color="inherit"
             aria-label="open drawer"

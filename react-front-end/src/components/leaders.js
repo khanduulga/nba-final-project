@@ -7,9 +7,6 @@ import {
 import axios from 'axios';
 
 
-
-
-
 export default function Leaders(props) {
 
   console.log('looping?')
@@ -158,7 +155,7 @@ export default function Leaders(props) {
     }
   ];
 
-  const rows = [];
+  // const rows = [];
 
   const playersArray = [];
 
@@ -180,7 +177,8 @@ export default function Leaders(props) {
   
 
   return (
-    <div style={{ height: 750, width: '100%' }}>
+    <div style={{ height: 750, width: '96%' }}>
+      <h2>League Leaders</h2>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={playersArray} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} sortingOrder={['desc']}/>
       </MuiThemeProvider>

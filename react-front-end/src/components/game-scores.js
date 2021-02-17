@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: -10,
   },
   paper: {
-    maxWidth: 200,
+    maxWidth: 220,
     margin: `${theme.spacing(1)}px auto`,
     padding: theme.spacing(2),
     backgroundColor: '#949499',
@@ -22,13 +22,16 @@ const useStyles = makeStyles((theme) => ({
     textEmphasis: 'bold',
     fontSize: 15,
     boxShadow: '40px',
+    border: 'solid black',
+    borderWidth: '2px',
+    borderRadius: '5px',
   },
   paperAlt: {
     maxWidth: 200,
     margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     backgroundColor: '#242429',
-    color: 'gold',
+    color: 'white',
     textEmphasis: 'bold',
     fontSize: 18,
   },
@@ -61,8 +64,6 @@ export default function GameScores() {
     });
   }, []);
 
-  const currentDay = state.date.slice(-2);
-  const currentYear = state.date.substring(0,4);
   const currentGames = state.games
 
   console.log(currentGames)
@@ -81,7 +82,7 @@ export default function GameScores() {
     return (
       <React.Fragment>
         <Grid item xs={1.5}>
-          <Paper className={classes.paperAlt}> Feb {currentDay}, {currentYear}</Paper>
+          <Paper className={classes.paperAlt}>Scores</Paper>
         </Grid>
         {mappedGames}
       </React.Fragment>
