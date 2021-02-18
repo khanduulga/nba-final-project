@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     textEmphasis: 'bold',
     fontSize: 18,
     border: 'solid 1px gold',
-
   },
   chev: {
     marginTop: 29,
