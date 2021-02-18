@@ -13,6 +13,8 @@ import {
 import ShotChart from './components/ShotChart'
 import Player from './components/player'
 import Standings from './components/standings'
+import Players from './components/players'
+
 
 export default function App(props) {
 
@@ -82,8 +84,11 @@ export default function App(props) {
           <Route path="/shotchart">
             <ShotChart />
           </Route>
-          <Route path='/player'>
+          <Route path='/player/:id'>
             <Player />
+          </Route>
+          <Route path='/players'>
+            <Players />
           </Route>
           <Route path='/standings'>
             <Standings

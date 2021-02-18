@@ -71,7 +71,7 @@ export default function GameScores() {
     return (
       <Grid item xs={1.5}>
         <Paper className={classes.paper}>
-          <img className={classes.img} alt="awayLogo" src={`team-logos/${game.awayTeam.teamTricode}.svg`} /> {game.awayTeam.teamTricode} {game.period > 0 ? game.awayTeam.score : null} {game.period > 0 ? null : "at"} <img className={classes.img} alt="homeLogo" src={`team-logos/${game.homeTeam.teamTricode}.svg`} />{game.homeTeam.teamTricode} {game.period > 0 ? game.homeTeam.score : null} {game.gameStatusText}
+          <img className={classes.img} alt="awayLogo" src={`/team-logos/${game.awayTeam.teamTricode}.svg`} /> {game.awayTeam.teamTricode} {game.period > 0 ? game.awayTeam.score : null} {game.period > 0 ? null : "at"} <img className={classes.img} alt="homeLogo" src={`/team-logos/${game.homeTeam.teamTricode}.svg`} />{game.homeTeam.teamTricode} {game.period > 0 ? game.homeTeam.score : null} {game.gameStatusText}
         </Paper>
       </Grid>
     )

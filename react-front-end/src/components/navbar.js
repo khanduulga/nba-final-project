@@ -29,6 +29,7 @@ import {
 } from "react-router-dom";
 
 
+
 const drawerWidth = 208;
 
 const useStyles = makeStyles((theme) => ({
@@ -163,8 +164,10 @@ export default function Navbar() {
         })}
       >
         <Toolbar>
-          <a href={"http://localhost:3000/"}><img src={"images/logo.png"} alt="logo" /></a>
-          <a href={"http://localhost:3000/"} className={classes.home}><h2>NBA Dashboard</h2></a>
+          {/* <a href={"http://localhost:3000/"}><img src={"images/logo.png"} alt="logo" /></a>
+          <a href={"http://localhost:3000/"} className={classes.home}><h2>NBA Dashboard</h2></a> */}
+          <a href={"http://localhost:3000/"}><img src={"/images/logo.png"} alt="logo" /></a>
+          <h2>NBA Dashboard</h2>
           <Typography variant="h6" noWrap className={classes.title}>
             
           </Typography>
@@ -209,7 +212,7 @@ export default function Navbar() {
         </div>
         <Divider />
         <List>
-          <Link to='/player'>
+          <Link to='/players'>
             <ListItem button key={'Players'}>
               <ListItemIcon><AccountBoxIcon /></ListItemIcon>
               <ListItemText primary={'Players'} />
