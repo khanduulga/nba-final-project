@@ -12,6 +12,7 @@ import {
 
 import ShotChart from './components/ShotChart'
 import Player from './components/player'
+import Standings from './components/standings'
 import Players from './components/players'
 
 
@@ -55,17 +56,12 @@ export default function App(props) {
     })
   }, [])
 
-  let curry_shots_object = state.curry_shots.shots
-  let curry_shots_array = []
-
+  let curry_shots_object = state.curry_shots.shots;
+  let curry_shots_array = [];
 
   for (let s in curry_shots_object) {
     curry_shots_array.push(curry_shots_object[s])
   }
-  
-  
-
-  
   
   if (loading){
     return (null)
@@ -93,6 +89,11 @@ export default function App(props) {
           </Route>
           <Route path='/players'>
             <Players />
+          </Route>
+          <Route path='/standings'>
+            <Standings
+              standings={state.standings}
+            />
           </Route>
         </Switch>
       </div>

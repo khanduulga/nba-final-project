@@ -7,12 +7,9 @@ import {
 import axios from 'axios';
 
 
-
-
-
 export default function Leaders(props) {
 
-  console.log('looping?')
+  // console.log('looping?')
 
   const [leagueLeaders, setleagueLeaders] = useState({})
 
@@ -23,7 +20,6 @@ export default function Leaders(props) {
       leagueLeaders: response.data
     }))
   })}, [])
-
 
 
   // console.log(props.leaders.resultSet);
@@ -169,18 +165,17 @@ export default function Leaders(props) {
     })
     playersArray.push(playerObject);
   })
-
-  // console.log(playersArray)
+  console.log(playersArray)
 
   const theme = createMuiTheme({
     typography: {
       fontSize: 12
     }})
-
   
 
   return (
-    <div style={{ height: 750, width: '95%' }}>
+    <div style={{ height: 750, width: '96%', paddingLeft: '15px', paddingBottom: '15px'}}>
+      <h2>League Leaders</h2>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={playersArray} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} />
       </MuiThemeProvider>
