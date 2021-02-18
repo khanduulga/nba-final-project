@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ShotChart from './ShotChart'
+import PlayerStats from './player-stats'
+import PlayerNews from './player-news'
+import PlayerGameLog from './player-game-log'
 import {
   Switch,
   Route,
@@ -28,11 +31,13 @@ export default function Player(props) {
     const url1 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/?region=us&lang=en&contentorigin=espn`);
     const url2 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn`);
     const url3 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/gamelog?region=us&lang=en&contentorigin=espn`);
+    const url4 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn&seasontype=3`)
     Promise.all([
       Promise.resolve(url0),
       Promise.resolve(url1),
       Promise.resolve(url2),
-      Promise.resolve(url3)
+      Promise.resolve(url3),
+      Promise.resolve(url4)
     ])
     .then((all) => {
       setState(prev => ({
@@ -40,7 +45,8 @@ export default function Player(props) {
         player_overview_stats: all[0].data,
         player_overview_all: all[1].data,
         player_stats: all[2].data,
-        player_game_log: all[3].data
+        player_game_log: all[3].data,
+        player_playoff_stats: all[4].data
       }))
       setLoading(false)
     })
@@ -51,12 +57,13 @@ export default function Player(props) {
   if(loading) {
     return(null)
   }
-  console.log(state.player_overview_stats.nextGame)
+  console.log(state.player_stats)
+  console.log(state.player_playoff_stats)
 
   return(
     <div>
       <div className="player-header">
-        <img src={`${state.player_overview_all.athlete.headshot.href}`} style={{ width: '20em' }}/>
+        <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '20em' }}/>
         <table className="player-info">
           <tbody>
             <tr>
@@ -92,9 +99,9 @@ export default function Player(props) {
       <hr/>
       <div className="link-row">
         <Link to={`${url}`}>Overview</Link>
-        <Link>Stats</Link>
-        <Link>Game Log</Link>
-        <Link>News</Link>
+        <Link to={`${url}/stats`}>Stats</Link>
+        <Link to={`${url}/gamelog`}>Game Log</Link>
+        <Link to={`${url}/news`}>News</Link>
         <Link to={`${url}/shotchart`}>Shot Chart</Link>
       </div>
       <hr/>
@@ -107,6 +114,20 @@ export default function Player(props) {
             stats={state.player_overview_stats.statistics}
             nextGame={state.player_overview_stats.nextGame}
           />
+        </Route>
+        <Route path={`${path}/stats`}>
+          <PlayerStats
+            stats={state.player_stats}
+            playoff_stats={state.player_playoff_stats}
+          />
+        </Route>
+        <Route path={`${path}/gamelog`}>
+          <PlayerGameLog 
+            gameLog={state.player_game_log}
+          />
+        </Route>
+        <Route path={`${path}/news`}>
+          <PlayerNews />
         </Route>
         <Route path={`${path}/shotchart`}>
           <ShotChart />
