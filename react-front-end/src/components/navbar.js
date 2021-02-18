@@ -19,7 +19,6 @@ import Paper from '@material-ui/core/Paper';
 // Buttons
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
-import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 // CSS
 import './navbar.css'
@@ -216,10 +215,12 @@ export default function Navbar() {
               <ListItemText primary={'Players'} />
             </ListItem>
           </Link>
-          <ListItem button key={'Teams'}>
-            <ListItemIcon><SportsBasketballIcon /></ListItemIcon>
-            <ListItemText primary={'Teams'} />
+          <Link to='/standings'>
+            <ListItem button key={'Standings'}>
+              <ListItemIcon><SportsBasketballIcon /></ListItemIcon>
+            <ListItemText primary={'Standings'} />
           </ListItem>
+          </Link>
         </List>
         <Divider />
         <List>
@@ -229,10 +230,10 @@ export default function Navbar() {
               <ListItemText primary={'Leaders'} />
             </ListItem>
           </Link>
-          <ListItem button key={'Compare'}>
+          {/* <ListItem button key={'Compare'}>
               <ListItemIcon><CompareArrowsIcon /></ListItemIcon>
               <ListItemText primary={'Compare'} />
-          </ListItem>
+          </ListItem> */}
         </List>
       </Drawer>
     </div>

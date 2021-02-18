@@ -12,6 +12,7 @@ import {
 
 import ShotChart from './components/ShotChart'
 import Player from './components/player'
+import Standings from './components/standings'
 
 export default function App(props) {
 
@@ -83,6 +84,11 @@ export default function App(props) {
           </Route>
           <Route path='/player'>
             <Player />
+          </Route>
+          <Route path='/standings'>
+            <Standings
+              standings={state.standings}
+            />
           </Route>
         </Switch>
       </div>

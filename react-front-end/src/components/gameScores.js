@@ -66,7 +66,6 @@ export default function GameScores() {
 
   const currentGames = state.games
 
-  console.log(currentGames)
 
   const mappedGames = currentGames.map(game => {
     return (

@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export default function Leaders(props) {
 
-  console.log('looping?')
+  // console.log('looping?')
 
   const [leagueLeaders, setleagueLeaders] = useState({})
 
@@ -20,7 +20,6 @@ export default function Leaders(props) {
       leagueLeaders: response.data
     }))
   })}, [])
-
 
 
   // console.log(props.leaders.resultSet);
@@ -155,7 +154,7 @@ export default function Leaders(props) {
     }
   ];
 
-  // const rows = [];
+  const rows = [];
 
   const playersArray = [];
 
@@ -166,14 +165,12 @@ export default function Leaders(props) {
     })
     playersArray.push(playerObject);
   })
-
-  // console.log(playersArray)
+  console.log(playersArray)
 
   const theme = createMuiTheme({
     typography: {
       fontSize: 12
     }})
-
   
 
   return (

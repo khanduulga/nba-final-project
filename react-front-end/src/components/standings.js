@@ -5,73 +5,144 @@ import {
   MuiThemeProvider
 } from "@material-ui/core/styles";
 import axios from 'axios';
+import './standings.css'
 
 
-export default function Leaders(props) {
+export default function Standings(props) {
 
-  const [] = useState({})
+  const [leagueStandings, setleagueStandings] = useState({
+    leagueStandings: {}
+  })
 
-  useEffect(() => {axios.get('')
+  useEffect(() => {axios.get('https://site.web.api.espn.com/apis/v2/sports/basketball/nba/standings?region=us&lang=en&contentorigin=espn&type=0&level=2&sort=playoffseed%3Aasc')
   .then((response) => {
-    setleagueLeaders(prev => ({
+    setleagueStandings(prev => ({
       ...prev,
-      leagueLeaders: response.data
+      leagueStandings: response.data
     }))
   })}, [])
+  
+  //Organize response data from ESPN
+  const nba = leagueStandings.leagueStandings.children
+  console.log(nba)
 
+  let westConf = {};
+  let eastConf = {};
 
-  // console.log(props.leaders.resultSet);
-  const headers = props.leaders.resultSet.headers;
-  const players = props.leaders.resultSet.rowSet;
-  headers[0] = 'id';
+  for (const x in nba) {
+    let west = nba[x]
+    westConf = west
+    let east = nba[0]
+    eastConf = east
+  }
+
+  const westStandings = westConf.standings;
+  const eastStandings = eastConf.standings;
+
+  const westArray = [];
+  const eastArray = [];
+
+  for (const wTeam in westStandings) {
+    westArray.push(westStandings[wTeam])
+  }
+  for (const eTeam in eastStandings) {
+    eastArray.push(eastStandings[eTeam])
+  }
+
+  const finalWest = westArray[6];
+  const finalEast = eastArray[6];
+
+  let formattedWest = [];
+  let formattedEast = [];
+
+  if (finalWest) {
+    formattedWest = finalWest.map(team => {
+      return {
+        id: team.stats[0].value,
+        rank: team.stats[0].value,
+        name: team.team.displayName,
+        wins: team.stats[1].value,
+        losses: team.stats[2].value,
+        winpct: team.stats[3].value.toFixed(3),
+        gb: team.stats[4].value,
+        ppg: team.stats[5].value.toFixed(1),
+        pointsAgainst: team.stats[6].value.toFixed(1),
+        diff: team.stats[7].value.toFixed(1),
+        streak: team.stats[8].value,
+        divPct: team.stats[9].value.toFixed(3),
+        leaguePct: team.stats[10].value.toFixed(3),
+        splits: team.stats[11].summary,
+        home: team.stats[12].summary,
+        road: team.stats[13].summary,
+        div: team.stats[14].summary,
+        conf: team.stats[15].summary,
+        lastten: team.stats[16].summary,
+      }
+    })
+  }
+
+  if (finalEast) {
+    formattedEast = finalEast.map(team => {
+      return {
+        id: team.stats[0].value,
+        rank: team.stats[0].value,
+        name: team.team.displayName,
+        wins: team.stats[1].value,
+        losses: team.stats[2].value,
+        winpct: team.stats[3].value.toFixed(3),
+        gb: team.stats[4].value,
+        ppg: team.stats[5].value.toFixed(1),
+        pointsAgainst: team.stats[6].value.toFixed(1),
+        diff: team.stats[7].value.toFixed(1),
+        streak: team.stats[8].value,
+        divPct: team.stats[9].value.toFixed(3),
+        leaguePct: team.stats[10].value.toFixed(3),
+        home: team.stats[12].summary,
+        road: team.stats[13].summary,
+        div: team.stats[14].summary,
+        conf: team.stats[15].summary,
+        lastten: team.stats[16].summary,
+      }
+    })
+  }
+
 
   const columns = [
     { field: 'id', hide: true},
-    { field: 'RANK', headerName: 'Rank', width: 65 },
-    { field: 'PLAYER', headerName: 'Name', width: 115 },
-    { field: 'TEAM', headerName: 'Team', width: 75 },
-    {
-      field: 'GP',
-      headerName: 'GP',
-      type: 'number',
-      width: 75,
-    },
-    {
-      field: 'MIN',
-      headerName: 'MIN',
-      type: 'number',
-      width: 75,
-    },
-    {
-      field: 'FGM',
-      headerName: 'FGM',
-      type: 'number',
-      width: 75,
-    },
+    { field: 'rank', headerName: 'Rank', width: 63 },
+    { field: 'name', headerName: 'Team', width: 195},
+    { field: 'wins', headerName: 'W', width: 60 },
+    { field: 'losses', headerName: 'L', width: 60 },
+    { field: 'winpct', headerName: 'WIN %', width: 80 },
+    { field: 'gb', headerName: 'GB', width: 60 },
+    { field: 'ppg', headerName: 'PPG', width: 90 },
+    { field: 'pointsAgainst', headerName: 'Opp. PPG', width: 100 },
+    { field: 'diff', headerName: 'DIFF', width: 60 },
+    { field: 'streak', headerName: 'Streak', width: 80 },
+    { field: 'divPct', headerName: 'Div %', width: 100 },
+    { field: 'leaguePct', headerName: 'League %', width: 100 },
+    { field: 'road', headerName: 'ROAD', width: 100 },
+    { field: 'div', headerName: 'vs. Div', width: 120 },
+    { field: 'conf', headerName: 'vs. Conf', width: 120 },
+    { field: 'lastten', headerName: 'L10', width: 120 }
   ];
-
-  const teamsArray = [];
-
-  teams.map((team) => {
-    let teamObject = {};
-    headers.map((header, index) => {
-      teamObject[header] = team[index];
-    })
-    teamsArray.push(teamObject);
-  })
-
-  // console.log(playersArray)
 
   const theme = createMuiTheme({
     typography: {
-      fontSize: 12
-    }})
+      fontSize: 12,
+    },
+  })
 
   return (
-    <div style={{ height: 750, width: '96%' }}>
-      <h2>League Leaders</h2>
+    <div style={{ height: 750, width: '84%', paddingLeft: '65px', paddingBottom: '15px'}}>
+      <h1>2020-21 Season Standings</h1>
+      <h2>Western Conference</h2>
       <MuiThemeProvider theme={theme}>
-        <DataGrid rows={playersArray} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} sortingOrder={['desc']}/>
+        <DataGrid rows={formattedWest} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
+      </MuiThemeProvider>
+      <h2>Eastern Conference</h2>
+      <MuiThemeProvider theme={theme}>
+        <DataGrid rows={formattedEast} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
       </MuiThemeProvider>
     </div>
   );
