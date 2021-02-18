@@ -8,6 +8,7 @@ import {
 export default function PlayerStats(props) {
 
   const avgColumns = [
+    { field: 'id', hide: true },
     props.stats.categories[0].labels.map((label) => {
       return { field: label, headerName: label, width: 85 }
     })
