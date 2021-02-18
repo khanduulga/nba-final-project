@@ -4,17 +4,17 @@ import Button from '@material-ui/core/Button';
 
 export default function Search() {
   return(
-    <div className="search">
+    <div className="search" style={{paddingTop: '20px', display: 'flex', flexDirection: 'column'}}>
       <h1>Find a Player</h1>
-      <div style={{marginRight: 1 + 'em'}}>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
         <TextField
           label="Search"
           variant="outlined"
         />
+        <Button variant="contained" style={{backgroundColor: '#311b92', color: 'white', marginLeft: '10px'}}  href="">
+        Select
+        </Button>  
       </div>
-      <Button variant="contained" style={{backgroundColor: '#311b92', color: 'white'}}  href="">
-      Select
-      </Button>  
     </div>
   )
 }

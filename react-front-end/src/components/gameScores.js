@@ -9,9 +9,10 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    overflow: 'hidden',
+    overflow: 'auto',
     padding: theme.spacing(0, 1),
-    marginTop: -10,
+    marginTop: -6,
+    height: 110
   },
   paper: {
     width: '14em',
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     textEmphasis: 'bold',
     fontSize: 15,
     boxShadow: '40px',
-    border: 'solid black',
+    border: 'solid white',
     borderWidth: '2px',
     borderRadius: '5px',
   },
@@ -34,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     textEmphasis: 'bold',
     fontSize: 18,
+    border: 'solid 1px gold',
+
   },
   chev: {
     marginTop: 29,

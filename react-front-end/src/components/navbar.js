@@ -129,6 +129,11 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: '1px',
     marginRight: '18px'
   },
+  link: {
+    textDecoration: 'none',
+    color: 'black',
+    textDecoration: 'underline'
+  }
 }));
 
 export default function Navbar() {
@@ -164,10 +169,8 @@ export default function Navbar() {
         })}
       >
         <Toolbar>
-          {/* <a href={"http://localhost:3000/"}><img src={"images/logo.png"} alt="logo" /></a>
-          <a href={"http://localhost:3000/"} className={classes.home}><h2>NBA Dashboard</h2></a> */}
-          <a href={"http://localhost:3000/"}><img src={"/images/logo.png"} alt="logo" /></a>
-          <h2>NBA Dashboard</h2>
+          <a href={"http://localhost:3000/"}><img src={"images/logo.png"} alt="logo" /></a>
+          <a href={"http://localhost:3000/"} className={classes.home}><h2>NBA Dashboard</h2></a>
           <Typography variant="h6" noWrap className={classes.title}>
             
           </Typography>
@@ -215,13 +218,13 @@ export default function Navbar() {
           <Link to='/players'>
             <ListItem button key={'Players'}>
               <ListItemIcon><AccountBoxIcon /></ListItemIcon>
-              <ListItemText primary={'Players'} />
+              <ListItemText className={classes.link}  primary={'Players'} />
             </ListItem>
           </Link>
           <Link to='/standings'>
             <ListItem button key={'Standings'}>
               <ListItemIcon><SportsBasketballIcon /></ListItemIcon>
-            <ListItemText primary={'Standings'} />
+            <ListItemText className={classes.link}  primary={'Standings'} />
           </ListItem>
           </Link>
         </List>
@@ -230,7 +233,7 @@ export default function Navbar() {
           <Link to='/leaders'>
             <ListItem button key={'Leaders'}>
               <ListItemIcon><EqualizerIcon /></ListItemIcon>
-              <ListItemText primary={'Leaders'} />
+              <ListItemText className={classes.link}  primary={'Leaders'} />
             </ListItem>
           </Link>
           {/* <ListItem button key={'Compare'}>
