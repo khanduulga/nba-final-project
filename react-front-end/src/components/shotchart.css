@@ -1,10 +1,15 @@
-svg text {
+.shot-chart text {
   display: none;
 }
 
-svg g rect {
+.shot-chart g rect {
   display: none;
 }
 
-svg g:hover text { display: block;}
-svg g:hover rect { display: block;}
+.shot-chart g:hover circle {
+  r: 5.5;
+}
+.shot-chart g:hover text { 
+  display: block;
+}
+.shot-chart g:hover rect { display: block;}
