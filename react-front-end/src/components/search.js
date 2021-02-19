@@ -12,17 +12,18 @@ export default function Search(props) {
 
 
   return(
-    <div className="search" style={{paddingTop: '20px', display: 'flex', flexDirection: 'column'}}>
-      <h1>Find a Player</h1>
+    <div className="search" style={{paddingRight: '20px', display: 'flex', flexDirection: 'column'}}>
       <div style={{display: 'flex', justifyContent: 'center'}}>
-        <TextField
-          label="Search"
-          variant="outlined"
-          onChange={event => {
-            const { value } = event.target;
-            setTerm( value );
-          }}
-        />
+        <div style={{backgroundColor: 'white'}}>
+          <TextField
+            label="Search"
+            variant="outlined"
+            onChange={event => {
+              const { value } = event.target;
+              setTerm( value );
+            }}
+          />
+        </div>
         <Button variant="contained" style={{backgroundColor: '#311b92', color: 'white', marginLeft: '10px'}}  href={`/players/${term}`}>
         Search
         </Button>  
