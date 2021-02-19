@@ -24,6 +24,8 @@ export default function Player(props) {
     player_overview_all: [],
     player_stats: [],
     player_game_log: [],
+    player_playoff_stats: [],
+    player_news: []
   });
   
   useEffect(() => {
@@ -57,8 +59,7 @@ export default function Player(props) {
   if(loading) {
     return(null)
   }
-  // console.log(state.player_stats)
-  // console.log(state.player_playoff_stats)
+  console.log(state.player_game_log, state.player_overview_all)
 
   return(
     <div>
@@ -132,7 +133,9 @@ export default function Player(props) {
           />
         </Route>
         <Route path={`${path}/news`}>
-          <PlayerNews />
+          <PlayerNews 
+            news={state.player_overview_stats.news}
+          />
         </Route>
         <Route path={`${path}/shotchart`}>
           <ShotChart />
