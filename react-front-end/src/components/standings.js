@@ -108,14 +108,12 @@ export default function Standings(props) {
     })
   }
 
-
   const columns = [
     { field: 'id', hide: true},
     { field: 'rank', headerName: 'Rank', width: 63 },
     {field: 'img', headerName: 'Team', width: 68, renderCell: (params) => {
       return(<img style={{verticalAlign: 'middle', width: '38px'}} src={params.row.img}/>)
     }},
-    // { field: 'img', headerName: 'Logo', width: 60},
     { field: 'name', headerName: 'Name', width: 195},
     { field: 'wins', headerName: 'W', width: 60 },
     { field: 'losses', headerName: 'L', width: 60 },
