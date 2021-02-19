@@ -59,7 +59,7 @@ export default function Player(props) {
   if(loading) {
     return(null)
   }
-  console.log(state.player_game_log, state.player_overview_all)
+
 
   return(
     <div>

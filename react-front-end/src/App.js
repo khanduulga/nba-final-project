@@ -87,13 +87,16 @@ export default function App(props) {
           <Route path='/player/:id'>
             <Player />
           </Route>
-          <Route path='/players'>
-            <Players />
-          </Route>
           <Route path='/standings'>
             <Standings
               standings={state.standings}
             />
+          </Route>
+          <Route path='/players/:term'>
+            <Players />
+          </Route>
+          <Route path='/players'>
+            <Players />
           </Route>
         </Switch>
       </div>
