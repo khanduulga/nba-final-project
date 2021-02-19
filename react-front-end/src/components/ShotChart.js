@@ -2,10 +2,6 @@ import React from "react";
 
 import './shotchart.css'
 
-// onMouseEnter={() => this.someHandler}
-//     onMouseLeave={() => this.someOtherHandler
-
-
 export default function ShotChart(props) {
   let shotId = 0
   
@@ -94,7 +90,7 @@ export default function ShotChart(props) {
       viewBox="0 0 750 705"
     >
 
-      {/* court setup */}
+      {/* Ryan's court setup */}
       {/* <circle cx="375" cy="71.25" r="11.96808510638298" fill="none" stroke="black"></circle>
       <line x1="330" x2="420.00000000000006" y1="60" y2="60" stroke="black"></line>
       <rect x="255.00000000000003" y="0" width="240" height="285" fill="none" stroke="black"></rect>
