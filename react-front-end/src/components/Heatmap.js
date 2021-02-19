@@ -3,6 +3,12 @@ import React, { PureComponent } from 'react'
 
 export default function Heatmap(props) {
   let zoneId = 0
+
+  if (props.shots["message"] == "NO DATA FOUND!") {
+    return (
+      <text className="error-message">NO DATA FOUND!</text>
+    )
+  }
   //counts for radius or color indication
   let zones = [
     'Backcourt',
@@ -53,6 +59,18 @@ export default function Heatmap(props) {
     if (zone === "Left Corner 3") {
       return (
         <g key={zoneId}>
+          <circle
+            cx={70}
+            cy={70}
+            r="60"
+            fill="white"
+            opacity="0.7"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+
+          </circle>
           <text x={60} y={30} textLength="300" fill="blue">
             <tspan x={30} dy="1.2em">
               Left Corner 3
@@ -70,22 +88,22 @@ export default function Heatmap(props) {
               FGM: {fgm}
             </tspan>
           </text>
-          <circle
-            cx={70}
-            cy={70}
-            r="60"
-            fill="none"
-            stroke="black"
-            id="zone"
-            overflow="visible"
-          >
-
-          </circle>
         </g>
       )
     } else if (zone === "Right Corner 3") {
       return (
         <g key={zoneId}>
+          <circle
+            cx={680}
+            cy={70}
+            r="60"
+            fill="white"
+            opacity="0.7"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+          </circle>
           <text cx={690} y={30} textLength="300" fill="blue">
             <tspan x={635} dy="1.2em">
               Right Corner 3
@@ -103,22 +121,24 @@ export default function Heatmap(props) {
               FGM: {fgm}
             </tspan>
           </text>
-          <circle
-            cx={680}
-            cy={70}
-            r="60"
-            fill="none"
-            stroke="black"
-            id="zone"
-            overflow="visible"
-          >
-          </circle>
         </g>
       )
     } else if (zone === "Backcourt") {
       return (
         <g key={zoneId}>
-          <text x={325} y={595} textLength="300" fill="blue">
+          <circle
+            cx={375}
+            cy={635}
+            r="60"
+            fill="white"
+            opacity="0.7"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+
+          </circle>
+          <text x={325} y={590} textLength="300" fill="blue">
             <tspan x={345} dy="1.2em">
               Backcourt
             </tspan>
@@ -135,22 +155,23 @@ export default function Heatmap(props) {
               FGM: {fgm}
             </tspan>
           </text>
+        </g>
+      )
+    } else if (zone === "Above the Break 3") {
+      return (
+        <g key={zoneId}>
           <circle
             cx={375}
-            cy={635}
-            r="60"
-            fill="none"
+            cy={500}
+            r="70"
+            fill="white"
+            opacity="0.7"
             stroke="black"
             id="zone"
             overflow="visible"
           >
 
           </circle>
-        </g>
-      )
-    } else if (zone === "Above the Break 3") {
-      return (
-        <g key={zoneId}>
           <text x={325} y={460} textLength="300" fill="blue">
             <tspan x={315} dy="1.2em">
               Above the Break 3
@@ -168,22 +189,23 @@ export default function Heatmap(props) {
               FGM: {fgm}
             </tspan>
           </text>
+        </g>
+      )
+    } else if (zone === "Mid-Range") {
+      return (
+        <g key={zoneId}>
           <circle
-            cx={375}
-            cy={500}
-            r="70"
-            fill="none"
+            cx={220}
+            cy={340}
+            r="60"
+            fill="white"
+            opacity="0.7"
             stroke="black"
             id="zone"
             overflow="visible"
           >
 
           </circle>
-        </g>
-      )
-    } else if (zone === "Mid-Range") {
-      return (
-        <g key={zoneId}>
           <text x={250} y={295} textLength="300" fill="blue">
             <tspan x={190} dy="1.2em">
               Mid-Range
@@ -201,22 +223,23 @@ export default function Heatmap(props) {
               FGM: {fgm}
             </tspan>
           </text>
+        </g>
+      )
+    } else if (zone === "In The Paint (Non-RA)") {
+      return (
+        <g key={zoneId}>
           <circle
-            cx={220}
-            cy={340}
+            cx={375}
+            cy={250}
             r="60"
-            fill="none"
+            fill="white"
+            opacity="0.7"
             stroke="black"
             id="zone"
             overflow="visible"
           >
 
           </circle>
-        </g>
-      )
-    } else if (zone === "In The Paint (Non-RA)") {
-      return (
-        <g key={zoneId}>
           <text x={325} y={210} textLength="300" fill="blue">
             <tspan x={338} dy="1.2em">
               In The Paint
@@ -234,22 +257,23 @@ export default function Heatmap(props) {
               FGM: {fgm}
             </tspan>
           </text>
+        </g>
+      )
+    } else if (zone === "Restricted Area") {
+      return (
+        <g key={zoneId}>
           <circle
             cx={375}
-            cy={250}
+            cy={100}
             r="60"
-            fill="none"
+            fill="white"
+            opacity="0.7"
             stroke="black"
             id="zone"
             overflow="visible"
           >
 
           </circle>
-        </g>
-      )
-    } else if (zone === "Restricted Area") {
-      return (
-        <g key={zoneId}>
           <text x={325} y={60} textLength="300" fill="blue">
             <tspan x={325} dy="1.2em">
               Restricted Area
@@ -267,17 +291,6 @@ export default function Heatmap(props) {
               FGM: {fgm}
             </tspan>
           </text>
-          <circle
-            cx={375}
-            cy={100}
-            r="60"
-            fill="none"
-            stroke="black"
-            id="zone"
-            overflow="visible"
-          >
-
-          </circle>
         </g>
       )
     } else {
