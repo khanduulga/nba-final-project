@@ -111,9 +111,9 @@ export default function PlayerGameLog(props) {
     }})
 
   return(
-    <div className="player-stats" >
+    <div className="player-stats" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}} >
       <h1>Player Game Log</h1>
-      <div style={{ height: 950, width: '85%', paddingLeft: '15px', paddingBottom: '15px'}}>
+      <div style={{ height: 950, width: '70%', paddingLeft: '75px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid rows={rows} columns={columns} rowHeight={35} pageSize={30} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
         </MuiThemeProvider>

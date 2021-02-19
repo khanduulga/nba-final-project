@@ -24,7 +24,7 @@ export default function Search(props) {
             }}
           />
         </div>
-        <Button variant="contained" style={{backgroundColor: '#311b92', color: 'white', marginLeft: '10px'}}  href={`/players/${term}`}>
+        <Button variant="contained" style={{backgroundColor: '#311b92', color: 'white', marginLeft: '10px', border: 'solid white', borderWidth: '1px'}}  href={`/players/${term}`}>
         Search
         </Button>  
       </div>

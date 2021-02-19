@@ -78,8 +78,7 @@ export default function Player(props) {
     return (null)
   }
 
-
-  return (
+  return(
     <div>
       <div className="player-header">
         <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '20em' }} />

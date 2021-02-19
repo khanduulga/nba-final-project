@@ -11,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'auto',
     padding: theme.spacing(0, 1),
     marginTop: -6,
-    height: 100,
+    height: 140,
     display: 'flex',
-    width: '100vw'
+    width: '95vw'
   },
   paper: {
     minWidth: '14em',
@@ -24,19 +24,19 @@ const useStyles = makeStyles((theme) => ({
     textEmphasis: 'bold',
     fontSize: 15,
     boxShadow: '40px',
-    border: 'solid white',
-    borderWidth: '2px',
     borderRadius: '5px',
+    height: '7em'
   },
   paperAlt: {
     width: 100,
     margin: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
     padding: theme.spacing(1),
-    backgroundColor: '#242429',
+    backgroundColor: '#242428',
     color: 'white',
     textEmphasis: 'bold',
     fontSize: 18,
-    border: 'solid 1px gold',
+    border: 'solid 1px black',
+    height: '4em'
   },
   chev: {
     marginTop: 29,

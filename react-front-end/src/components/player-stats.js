@@ -79,28 +79,28 @@ export default function PlayerStats(props) {
 
 
   return(
-    <div className="player-stats">
+    <div className="player-stats" style={{ display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
       <div className="season-type-switcher">
 
       </div>
-      <div className="tats-title">Averages</div>
-      <div className="averages" style={{ height: 750, width: '89%', paddingLeft: '15px', paddingBottom: '15px'}}>
+      <h2 className="tats-title">Averages</h2>
+      <div className="averages" style={{ height: 750, width: '90%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={avgRows} columns={avgColumns} autoPageSize={true} hideFooterPagination={true} 
           />
         </MuiThemeProvider>
       </div>
-      <div className="stats-title">Totals</div>
-      <div className="totals" style={{ height: 750, width: '77%', paddingLeft: '15px', paddingBottom: '15px'}}>
+      <h2 className="stats-title">Totals</h2>
+      <div className="totals" style={{ height: 750, width: '80%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={totalsRows} columns={totalsColumns} autoPageSize={true} hideFooterPagination={true} 
           />
         </MuiThemeProvider>
       </div>
-      <div className="stats-title">Miscellaneous</div>
-      <div className="misc" style={{ height: 750, width: '70%', paddingLeft: '15px', paddingBottom: '15px'}}>
+      <h2 className="stats-title">Miscellaneous</h2>
+      <div className="misc" style={{ height: 750, width: '76%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={miscRows} columns={miscColumns} autoPageSize={true} hideFooterPagination={true} 

@@ -3,6 +3,11 @@ import React, { PureComponent } from 'react'
 
 export default function Heatmap(props) {
   let zoneId = 0
+  if (props.shots["message"] == "NO DATA FOUND!") {
+    return (
+      <text className="error-message">NO DATA FOUND!</text>
+    )
+  }
   //counts for radius or color indication
   let zones = [
     'Backcourt',
