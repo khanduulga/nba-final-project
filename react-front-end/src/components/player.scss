@@ -51,6 +51,7 @@
   display: table;
   clear: both;
 }
+<<<<<<< HEAD
 .image-container {
   position: relative;
   text-align: center;
@@ -60,4 +61,19 @@
   position: absolute;
   bottom: 8px;
   left: 16px;
+=======
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.shot-chart {
+  margin-left: 25%;
+}
+
+.zone-chart {
+  margin-left: 25%;
+>>>>>>> d5fd1e4d11fa56f6bf5b801c5348ef986a5c8cee
 }

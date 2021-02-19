@@ -1,10 +1,30 @@
-svg text {
-  display: none;
+.shot-chart .tooltip circle {
+  z-index: 0;
 }
 
-svg g rect {
-  display: none;
+
+.shot-chart .tooltip .tooltiptext {
+  visibility: hidden;
+  position: absolute;
+  z-index: 25;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
 }
 
-svg g:hover text { display: block;}
-svg g:hover rect { display: block;}
+.shot-chart .tooltip rect {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+
+.shot-chart .tooltip:hover circle {
+  r: 5.5;
+}
+.shot-chart .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.shot-chart .tooltip:hover rect { display: block;}

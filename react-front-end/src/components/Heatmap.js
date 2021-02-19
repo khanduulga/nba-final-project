@@ -1,86 +1,306 @@
-import { ResponsiveHeatMap } from '@nivo/heatmap'
+import React, { PureComponent } from 'react'
 
-const data = [
-  {"xCoordinate":1,"yCoordinate":26,"shotMadeFlag":0,"metadata":[{"property":"Distance","value":"2 Ft"},{"property":"Qtr","value":"1"},{"property":"Sec Left In Qtr","value":"37"}]},
-  {"xCoordinate":-234,"yCoordinate":57,"shotMadeFlag":1,"metadata":[{"property":"Distance","value":"24 Ft"},{"property":"Qtr","value":"2"},{"property":"Sec Left In Qtr","value":"39"}]},
-  {"xCoordinate":-183,"yCoordinate":214,"shotMadeFlag":0,"metadata":[{"property":"Distance","value":"28 Ft"},{"property":"Qtr","value":"2"},{"property":"Sec Left In Qtr","value":"30"}]},
-  {"xCoordinate":5,"yCoordinate":5,"shotMadeFlag":0,"metadata":[{"property":"Distance","value":"0 Ft"},{"property":"Qtr","value":"1"},{"property":"Sec Left In Qtr","value":"25"}]},
-  {"xCoordinate":-164,"yCoordinate":199,"shotMadeFlag":1,"metadata":[{"property":"Distance","value":"25 Ft"},{"property":"Qtr","value":"1"},{"property":"Sec Left In Qtr","value":"0"}]}
-]
 
-// const CustomCell = ({
-//   value,
-//   x,
-//   y,
-//   width,
-//   height,
-//   color,
-//   opacity,
-//   borderWidth,
-//   borderColor,
-//   textColor,
-// }) => (
-//   <g transform={`translate(${x}, ${y})`}>
-//       <path
-//           transform={`rotate(${value < 50 ? 180 : 0})`}
-//           fill={color}
-//           fillOpacity={opacity}
-//           strokeWidth={borderWidth}
-//           stroke={borderColor}
-//           d={`
-//               M0 -${Math.round(height / 2)}
-//               L${Math.round(width / 2)} ${Math.round(height / 2)}
-//               L-${Math.round(width / 2)} ${Math.round(height / 2)}
-//               L0 -${Math.round(height / 2)}
-//           `}
-//       />
-//       <text
-//           dominantBaseline="central"
-//           textAnchor="middle"
-//           style={{ fill: textColor }}
-//           dy={value < 50 ? -6 : 6}
-//       >
-//           {value}
-//       </text>
-//   </g>
-// )
+export default function Heatmap(props) {
+  let zoneId = 0
+  //counts for radius or color indication
+  let zones = [
+    'Backcourt',
+    'Above the Break 3',
+    'In The Paint (Non-RA)',
+    'Mid-Range',
+    'Left Corner 3',
+    'Right Corner 3',
+    'Restricted Area'
+  ]
 
-export default ShotsHeatMap = ({ data /* player shots array */ }) => (
-  <ResponsiveHeatMap
-      data={data}
-      indexBy= 'yCoordinate'
-      keys
-      margin={{ top: 100, right: 60, bottom: 60, left: 60 }}
-      width={750}
-      height={705}
-      axisTop={{ orient: 'top', tickSize: 1 }}
-      axisRight={null}
-      axisBottom={null}
-      axisLeft={{
-          orient: 'left',
-          tickSize: 1
-      }}
-      cellShape="circle"
-      cellOpacity={1}
-      cellBorderColor={{ from: 'color', modifiers: [ [ 'darker', 0.4 ] ] }}
-      labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.8 ] ] }}
-      defs={[
-          {
-              id: 'lines',
-              type: 'patternLines',
-              background: 'inherit',
-              color: 'rgba(0, 0, 0, 0.1)',
-              rotation: -45,
-              lineWidth: 4,
-              spacing: 7
-          }
-      ]}
-      fill={[ { id: 'lines' } ]}
-      animate={true}
-      motionConfig="wobbly"
-      motionStiffness={80}
-      motionDamping={9}
-      hoverTarget="cell"
-      cellHoverOthersOpacity={0.25}
-  />
-)
+  //CREATING COMPONENTS FOR EACH ZONE
+  const zoneInfoBoxes = zones.map(zone => {
+    let fga = 0
+    let fgm = 0;
+
+    //counting all shots data
+    props.shots.resultSets['0'].rowSet.map(shot => {
+      //check which zone
+      if (shot[13] === zone) {
+        fga++
+        //check if made
+        if (shot[20]) {
+          fgm++
+        }
+      }
+    })
+    // MISTAKE: THIS IS FOR LEAGUE AVERAGES
+    // props.shots.resultSets['1'].rowSet.map((currentAverage) => {
+    //   if (currentAverage[1] === zone) {
+    //     fga += currentAverage[4]
+    //   }
+    // })
+    // props.shots.resultSets['1'].rowSet.map((currentAverage) => {
+    //   if (currentAverage[1] === zone || currentAverage[2] === zone) {
+    //     fgm += currentAverage[5]
+    //   }
+    // })
+
+    //Field goal percentage
+    let fg_pct = Number.parseFloat((fgm / fga) * 100).toFixed(2)
+    if (fga === 0) {
+      fg_pct = 0
+    }
+
+    zoneId++
+
+    if (zone === "Left Corner 3") {
+      return (
+        <g key={zoneId}>
+          <text x={60} y={30} textLength="300" fill="blue">
+            <tspan x={30} dy="1.2em">
+              Left Corner 3
+            </tspan>
+            <tspan x={50} dy="1.2em" fontWeight="bold"> 
+              {fgm}/{fga}
+            </tspan>
+            <tspan x={45} dy="1.2em">
+              {fg_pct}%
+            </tspan>
+            <tspan x={40} dy="1.2em">
+              FGA: {fga}
+            </tspan>
+            <tspan x={40} dy="1.2em">
+              FGM: {fgm}
+            </tspan>
+          </text>
+          <circle
+            cx={70}
+            cy={70}
+            r="60"
+            fill="none"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+
+          </circle>
+        </g>
+      )
+    } else if (zone === "Right Corner 3") {
+      return (
+        <g key={zoneId}>
+          <text cx={690} y={30} textLength="300" fill="blue">
+            <tspan x={635} dy="1.2em">
+              Right Corner 3
+            </tspan>
+            <tspan x={665} dy="1.2em" fontWeight="bold"> 
+              {fgm}/{fga}
+            </tspan>
+            <tspan x={659} dy="1.2em">
+              {fg_pct}%
+            </tspan>
+            <tspan x={650} dy="1.2em">
+              FGA: {fga}
+            </tspan>
+            <tspan x={650} dy="1.2em">
+              FGM: {fgm}
+            </tspan>
+          </text>
+          <circle
+            cx={680}
+            cy={70}
+            r="60"
+            fill="none"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+          </circle>
+        </g>
+      )
+    } else if (zone === "Backcourt") {
+      return (
+        <g key={zoneId}>
+          <text x={325} y={595} textLength="300" fill="blue">
+            <tspan x={345} dy="1.2em">
+              Backcourt
+            </tspan>
+            <tspan x={365} dy="1.2em" fontWeight="bold"> 
+              {fgm}/{fga}
+            </tspan>
+            <tspan x={357} dy="1.2em">
+              {fg_pct}%
+            </tspan>
+            <tspan x={350} dy="1.2em">
+              FGA: {fga}
+            </tspan>
+            <tspan x={350} dy="1.2em">
+              FGM: {fgm}
+            </tspan>
+          </text>
+          <circle
+            cx={375}
+            cy={635}
+            r="60"
+            fill="none"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+
+          </circle>
+        </g>
+      )
+    } else if (zone === "Above the Break 3") {
+      return (
+        <g key={zoneId}>
+          <text x={325} y={460} textLength="300" fill="blue">
+            <tspan x={315} dy="1.2em">
+              Above the Break 3
+            </tspan>
+            <tspan x={350} dy="1.2em" fontWeight="bold"> 
+              {fgm}/{fga}
+            </tspan>
+            <tspan x={355} dy="1.2em">
+              {fg_pct}%
+            </tspan>
+            <tspan x={343} dy="1.2em">
+              FGA: {fga}
+            </tspan>
+            <tspan x={343} dy="1.2em">
+              FGM: {fgm}
+            </tspan>
+          </text>
+          <circle
+            cx={375}
+            cy={500}
+            r="70"
+            fill="none"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+
+          </circle>
+        </g>
+      )
+    } else if (zone === "Mid-Range") {
+      return (
+        <g key={zoneId}>
+          <text x={250} y={295} textLength="300" fill="blue">
+            <tspan x={190} dy="1.2em">
+              Mid-Range
+            </tspan>
+            <tspan x={203} dy="1.2em" fontWeight="bold"> 
+              {fgm}/{fga}
+            </tspan>
+            <tspan x={199} dy="1.2em">
+              {fg_pct}%
+            </tspan>
+            <tspan x={195} dy="1.2em">
+              FGA: {fga}
+            </tspan>
+            <tspan x={195} dy="1.2em">
+              FGM: {fgm}
+            </tspan>
+          </text>
+          <circle
+            cx={220}
+            cy={340}
+            r="60"
+            fill="none"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+
+          </circle>
+        </g>
+      )
+    } else if (zone === "In The Paint (Non-RA)") {
+      return (
+        <g key={zoneId}>
+          <text x={325} y={210} textLength="300" fill="blue">
+            <tspan x={338} dy="1.2em">
+              In The Paint
+            </tspan>
+            <tspan x={355} dy="1.2em" fontWeight="bold"> 
+              {fgm}/{fga}
+            </tspan>
+            <tspan x={353} dy="1.2em">
+              {fg_pct}%
+            </tspan>
+            <tspan x={345} dy="1.2em">
+              FGA: {fga}
+            </tspan>
+            <tspan x={345} dy="1.2em">
+              FGM: {fgm}
+            </tspan>
+          </text>
+          <circle
+            cx={375}
+            cy={250}
+            r="60"
+            fill="none"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+
+          </circle>
+        </g>
+      )
+    } else if (zone === "Restricted Area") {
+      return (
+        <g key={zoneId}>
+          <text x={325} y={60} textLength="300" fill="blue">
+            <tspan x={325} dy="1.2em">
+              Restricted Area
+            </tspan>
+            <tspan x={353} dy="1.2em" fontWeight="bold"> 
+              {fgm}/{fga}
+            </tspan>
+            <tspan x={352} dy="1.2em">
+              {fg_pct}%
+            </tspan>
+            <tspan x={345} dy="1.2em">
+              FGA: {fga}
+            </tspan>
+            <tspan x={345} dy="1.2em">
+              FGM: {fgm}
+            </tspan>
+          </text>
+          <circle
+            cx={375}
+            cy={100}
+            r="60"
+            fill="none"
+            stroke="black"
+            id="zone"
+            overflow="visible"
+          >
+
+          </circle>
+        </g>
+      )
+    } else {
+      return
+    }
+  })
+
+
+  return (
+    <svg
+      className="zone-chart"
+      height="705"
+      width="750"
+      overflow="visible"
+
+      // preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 750 705"
+    >
+      <rect x="0" y="0" width="750" height="705" fill="none" stroke="black"></rect>
+
+      <image href="https://cdn.discordapp.com/attachments/809499216354607190/811438397238411304/court.png" preserveAspectRatio="none" height="705" width="750"></image>
+
+      {zoneInfoBoxes}
+    </svg>
+  )
+}

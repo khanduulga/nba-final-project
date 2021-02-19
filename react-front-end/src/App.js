@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 
 import ShotChart from './components/ShotChart'
+import Heatmap from './components/Heatmap'
 import Player from './components/player'
 import Standings from './components/standings'
 import Players from './components/players'
@@ -89,7 +90,8 @@ export default function App(props) {
             />
           </Route>
           <Route path="/shotchart">
-            <ShotChart />
+            <ShotChart shots={state["lebron_shots"]} />
+            <Heatmap shots={state["lebron_shots"]}/>
           </Route>
           <Route path='/player/:id'>
             <Player />
