@@ -43,7 +43,7 @@ export default function PlayerOverview(props) {
             </div>
             <img src={`${props.nextGame.league.events[0].competitors[0].logo}`}/>
           </div>
-          <h1>  at  </h1>
+          <h1>  vs  </h1>
           <div className="teams">
             <img src={`${props.nextGame.league.events[0].competitors[1].logo}`}/>
             <div className="name-record">

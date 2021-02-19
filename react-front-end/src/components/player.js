@@ -99,11 +99,16 @@ export default function Player(props) {
       </div>
       <hr/>
       <div className="link-row">
-        <Link to={`${url}`}>Overview</Link>
-        <Link to={`${url}/stats`}>Stats</Link>
-        <Link to={`${url}/gamelog`}>Game Log</Link>
-        <Link to={`${url}/news`}>News</Link>
-        <Link to={`${url}/shotchart`}>Shot Chart</Link>
+        <Link style={{textDecoration: 'none',
+        color: 'black'}} to={`${url}`}>Overview</Link>
+        <Link style={{textDecoration: 'none',
+        color: 'black'}} to={`${url}/stats`}>Stats</Link>
+        <Link style={{textDecoration: 'none',
+        color: 'black'}} to={`${url}/gamelog`}>Game Log</Link>
+        <Link style={{textDecoration: 'none',
+        color: 'black'}} to={`${url}/news`}>News</Link>
+        <Link style={{textDecoration: 'none',
+        color: 'black'}} to={`${url}/shotchart`}>Shot Chart</Link>
       </div>
       <hr/>
 
