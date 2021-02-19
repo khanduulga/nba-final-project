@@ -5,13 +5,11 @@ import {
   createMuiTheme,
   MuiThemeProvider
 } from "@material-ui/core/styles";
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
 // const MyFormatter = function(props) {
 //   return <a href=
 // }
-
-
 
 const search = function(term, players) {
   if (!term) {
@@ -30,20 +28,13 @@ const search = function(term, players) {
 }
 
 
-
 export default function Player(props) {
-
-
-
 
   const [loading, setLoading] = useState(true)
 
   const [players, setPlayers] = useState({})
 
   let { term } = useParams();
-
-
-
 
 
   useEffect(() => {axios.get('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=256&sort=general.avgMinutes%3Adesc')
@@ -75,14 +66,12 @@ export default function Player(props) {
   const theme = createMuiTheme({
     typography: {
       fontSize: 12,
-      textDecoration: 'none',
-      color: 'black'
     }})
 
   const columns = [
     { field: 'id', hide: true},
     {field: 'displayName', headerName: 'Name', width: 200, renderCell: (params) => {
-      return(<a href={`/player/${params.row.id}`}>{params.row.displayName}</a>)
+      return(<a style={{textDecoration: 'none', color: 'black'}} href={`/player/${params.row.id}`}>{params.row.displayName}</a>)
     }},
     {field: 'teamShortName', headerName: 'Teams'},
     {field: 'position', headerName: 'Position', width: 200}

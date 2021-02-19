@@ -73,9 +73,9 @@ export default function App(props) {
           <Navbar />
         </div>
         <Switch>
-          <Route exact path="/">
+          {/* <Route exact path="/">
             <Search/>
-          </Route>
+          </Route> */}
           <Route path="/leaders">
             <Leaders 
               leaders={state.leaders}

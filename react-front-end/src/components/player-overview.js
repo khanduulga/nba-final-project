@@ -31,9 +31,10 @@ export default function PlayerOverview(props) {
       fontSize: 12
     }})
 
+
   return(
     <div className="player-overview">
-      <div className="next-game">
+      <div className="next-game" style={{borderRadius: '10px', boxShadow: 'inset 0 0 10px #000000'}}>
         <h2 className="next-game-header">{props.nextGame.displayName}</h2>
         <div className="game-display">
           <div className="teams">
@@ -41,11 +42,11 @@ export default function PlayerOverview(props) {
               <h2 className="teamName">{props.nextGame.league.events[0].competitors[0].name}</h2>
               <p className="record">{props.nextGame.league.events[0].competitors[0].record}</p>
             </div>
-            <img src={`${props.nextGame.league.events[0].competitors[0].logo}`}/>
+            <img style={{maxWidth: '2em 2em'}} src={`${props.nextGame.league.events[0].competitors[0].logo}`}/>
           </div>
           <h1>  vs  </h1>
           <div className="teams">
-            <img src={`${props.nextGame.league.events[0].competitors[1].logo}`}/>
+            <img style={{maxWidth: '2em 2em'}} src={`${props.nextGame.league.events[0].competitors[1].logo}`}/>
             <div className="name-record">
               <h2 className="teamName">{props.nextGame.league.events[0].competitors[1].name}</h2>
               <p className="record">{props.nextGame.league.events[0].competitors[1].record}</p>
@@ -54,7 +55,7 @@ export default function PlayerOverview(props) {
         </div>
       </div>
       <hr/>
-      <div className="overview-stats" style={{ height: 230, width: '60%', paddingTop: '15px'}}>
+      <div className="overview-stats" style={{ height: 230, width: '85%', paddingTop: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
             rows={rows} columns={columns} autoPageSize={true} hideFooterPagination={true} 
@@ -64,6 +65,7 @@ export default function PlayerOverview(props) {
       <div className="last_10">
 
       </div>
+      
     </div>
   )
 }

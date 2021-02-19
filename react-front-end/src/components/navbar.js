@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
   },
   home: {
     textDecoration: 'none',
-    color: 'white'
+    color: 'white',
   },
   paperAlt: {
     maxWidth: 200,
@@ -141,14 +141,15 @@ export default function Navbar() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  //Date
-  const d = new Date();
+
+  const d = new Date()
   const dateString = JSON.stringify(d);
   const months = {'01': "Jan", '02': "Feb", '03': "Mar", '04': "Apr", '05': "May", '06': "Jun", '07': "Jul", '08': "Aug", '09': "Sep", '10': "Oct", '11': "Nov", '12': "Dec",}
   const currentDay = dateString.substring(9,11);
   const currentYear = dateString.substring(1,5);
   const monthString = dateString.substring(6,8);
   const currentMonth = months[monthString];
+  // console.log(currentHour);
 
 
 
