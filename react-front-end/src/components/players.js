@@ -55,10 +55,10 @@ export default function Player(props) {
   let allPlayers
 
   if (!allPlayersSearched) {
-    console.log("allplayers searched falsy")
+    // console.log("allplayers searched falsy")
     allPlayers = players.players.athlete;
   } else {
-    console.log("allplayers searched truthy")
+    // console.log("allplayers searched truthy")
     allPlayers = allPlayersSearched;
   }
 
@@ -71,7 +71,7 @@ export default function Player(props) {
   const columns = [
     { field: 'id', hide: true},
     {field: 'displayName', headerName: 'Name', width: 200, renderCell: (params) => {
-      return(<a style={{textDecoration: 'none', color: 'black'}} href={`/player/${params.row.id}`}>{params.row.displayName}</a>)
+      return(<a style={{textDecoration: 'none', color: 'black'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '48px'}} src={params.row.img}/>{params.row.displayName}</a>)
     }},
     {field: 'teamShortName', headerName: 'Teams'},
     {field: 'position', headerName: 'Position', width: 200}
@@ -80,8 +80,10 @@ export default function Player(props) {
   ]
 
   allPlayers.map((player) => {
+    console.log(player);
     const playerObject = {
       id: player.athlete.id,
+      img: player.athlete.headshot.href,
       displayName: player.athlete.displayName,
       teamShortName: player.athlete.teamShortName,
       position: player.athlete.position.name
@@ -91,7 +93,7 @@ export default function Player(props) {
   // console.log(rows)
 
   return (
-    <div style={{ height: 750, width: '40%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
+    <div style={{ height: 750, width: '30%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
       <h1>Players</h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={rows} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[

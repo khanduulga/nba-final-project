@@ -165,7 +165,7 @@ export default function Leaders(props) {
     })
     playersArray.push(playerObject);
   })
-  console.log(playersArray)
+  console.log(playersArray);
 
   const theme = createMuiTheme({
     typography: {

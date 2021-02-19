@@ -59,6 +59,7 @@ export default function Standings(props) {
     formattedWest = finalWest.map(team => {
       return {
         id: team.stats[0].value,
+        img: team.team.logos[0].href,
         rank: team.stats[0].value,
         name: team.team.displayName,
         wins: team.stats[1].value,
@@ -85,6 +86,7 @@ export default function Standings(props) {
     formattedEast = finalEast.map(team => {
       return {
         id: team.stats[0].value,
+        img: team.team.logos[0].href,
         rank: team.stats[0].value,
         name: team.team.displayName,
         wins: team.stats[1].value,
@@ -110,7 +112,11 @@ export default function Standings(props) {
   const columns = [
     { field: 'id', hide: true},
     { field: 'rank', headerName: 'Rank', width: 63 },
-    { field: 'name', headerName: 'Team', width: 195},
+    {field: 'img', headerName: 'Team', width: 68, renderCell: (params) => {
+      return(<img style={{verticalAlign: 'middle', width: '38px'}} src={params.row.img}/>)
+    }},
+    // { field: 'img', headerName: 'Logo', width: 60},
+    { field: 'name', headerName: 'Name', width: 195},
     { field: 'wins', headerName: 'W', width: 60 },
     { field: 'losses', headerName: 'L', width: 60 },
     { field: 'winpct', headerName: 'WIN %', width: 80 },
