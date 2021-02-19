@@ -14,6 +14,7 @@ import ShotChart from './components/ShotChart'
 import Player from './components/player'
 import Standings from './components/standings'
 import Players from './components/players'
+import Home from './components/home'
 
 
 export default function App(props) {
@@ -26,7 +27,8 @@ export default function App(props) {
     lebron_stats: [],
     curry_stats: [],
     leaders: [],
-    players: []
+    players: [],
+    news : []
   })
 
   useEffect(() => {
@@ -35,6 +37,7 @@ export default function App(props) {
     const url2 = axios.get('/api/stats?name=lebron')
     const url3 = axios.get('/api/stats?name=curry')
     const url4 = axios.get('/api/leaders')
+    const url5 = axios.get(`https://onefeed.fan.api.espn.com/apis/v3/cached/contentEngine/oneFeed/leagues/nba?source=ESPN.com`)
   
     Promise.all([
       Promise.resolve(url0),
@@ -42,6 +45,7 @@ export default function App(props) {
       Promise.resolve(url2),
       Promise.resolve(url3),
       Promise.resolve(url4),
+      Promise.resolve(url5)
     ])
     .then((all) => {
       setState(prev => ({
@@ -50,7 +54,8 @@ export default function App(props) {
         curry_shots: all[1].data,
         lebron_stats: all[2].data,
         curry_stats: all[3].data,
-        leaders: all[4].data
+        leaders: all[4].data,
+        news: all[5].data
       }))
       setLoading(false)
     })
@@ -74,7 +79,9 @@ export default function App(props) {
         </div>
         <Switch>
           <Route exact path="/">
-            <Search/>
+            <Home
+              news={state.news}
+            />
           </Route>
           <Route path="/leaders">
             <Leaders 
