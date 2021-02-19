@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: -6,
     height: 140,
     display: 'flex',
-    width: '95vw'
+    width: '93vw'
   },
   paper: {
     minWidth: '14em',
