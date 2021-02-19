@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'auto',
     padding: theme.spacing(0, 1),
     marginTop: -6,
-    height: 110,
+    height: 100,
     display: 'flex',
     width: '100vw'
   },

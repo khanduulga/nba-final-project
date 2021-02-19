@@ -25,15 +25,15 @@ export default function Player(props) {
     setLoading(false)
   })}, [])
 
-
-
   if(loading){
     return(null)
   }
   const allPlayers = players.players.athletes
   const theme = createMuiTheme({
     typography: {
-      fontSize: 12
+      fontSize: 12,
+      textDecoration: 'none',
+      color: 'black'
     }})
 
   const columns = [
@@ -59,7 +59,8 @@ export default function Player(props) {
   // console.log(rows)
 
   return (
-    <div style={{ height: 750, width: '40%' }}>
+    <div style={{ height: 750, width: '40%', marginLeft: 'auto', marginRight: 'auto', paddingTop: '1px'}}>
+      <h1>Players</h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={rows} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} sortModel={[
           {

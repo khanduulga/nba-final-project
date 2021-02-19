@@ -6,8 +6,18 @@ import {
 } from "@material-ui/core/styles";
 
 export default function PlayerGameLog(props) {
+  const games = props.gameLog.events;
 
-  
+  const columns = [
+    { field: 'id', hide: true},
+    { field: 'atVs', headerName: 'atVs', width: 63 },
+  ]
+
+  let rows = []
+  for (let game in games) {
+    rows.push({id: games[game].id, atVs:  games[game].atVs})
+  }
+  console.log(rows);
 
   const theme = createMuiTheme({
     typography: {
@@ -17,6 +27,9 @@ export default function PlayerGameLog(props) {
   return(
     <div className="player-stats">
       <h1>Player Game Log</h1>
+      <MuiThemeProvider theme={theme}>
+        <DataGrid rows={rows} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
+      </MuiThemeProvider>
     </div>
   )
 }
