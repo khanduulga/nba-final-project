@@ -7,6 +7,7 @@ const curry_shots = require('./data/curry_shots.json')
 const lebron_stats = require('./data/lebron_stats.json')
 const curry_stats = require('./data/curry_stats.json')
 const league_leaders = require('./data/league_leaders.json')
+const dummy_shots = require('./data/dummy_shots.json')
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -30,6 +31,9 @@ App.get('/api/stats', (req, res) =>
 )
 App.get('/api/leaders', (req, res) =>
   res.json(league_leaders)
+)
+App.get('/api/dummy', (req, res) =>
+  res.json(dummy_shots)
 )
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

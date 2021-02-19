@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ShotChart from './ShotChart'
+import Heatmap from './Heatmap'
 import PlayerStats from './player-stats'
 import PlayerNews from './player-news'
 import PlayerGameLog from './player-game-log'
@@ -25,46 +26,63 @@ export default function Player(props) {
     player_stats: [],
     player_game_log: [],
     player_playoff_stats: [],
-    player_news: []
+    player_news: [],
+    player_shots: []
   });
-  
+
   useEffect(() => {
     const url0 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/overview?region=us&lang=en&contentorigin=espn`);
     const url1 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/?region=us&lang=en&contentorigin=espn`);
     const url2 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn`);
     const url3 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/gamelog?region=us&lang=en&contentorigin=espn`);
-    const url4 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn&seasontype=3`)
+    const url4 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn&seasontype=3`);
+    let url5 = axios.get('/api/dummy')
+
+
+    if (playerID.id == '1966') {
+      console.log("HERE!")
+      url5 = axios.get('/api/shots?name=lebron');//1966
+    }
+    if (playerID.id == 3975) {
+      url5 = axios.get('/api/shots?name=curry');//3975
+      console.log('HERE')
+    }
+    
+    
+
     Promise.all([
       Promise.resolve(url0),
       Promise.resolve(url1),
       Promise.resolve(url2),
       Promise.resolve(url3),
-      Promise.resolve(url4)
+      Promise.resolve(url4),
+      Promise.resolve(url5)
     ])
-    .then((all) => {
-      setState(prev => ({
-        ...prev,
-        player_overview_stats: all[0].data,
-        player_overview_all: all[1].data,
-        player_stats: all[2].data,
-        player_game_log: all[3].data,
-        player_playoff_stats: all[4].data
-      }))
-      setLoading(false)
-    })
+      .then((all) => {
+        setState(prev => ({
+          ...prev,
+          player_overview_stats: all[0].data,
+          player_overview_all: all[1].data,
+          player_stats: all[2].data,
+          player_game_log: all[3].data,
+          player_playoff_stats: all[4].data,
+          player_shots: all[5].data
+        }))
+        setLoading(false)
+      })
   }, [])
 
 
 
-  if(loading) {
-    return(null)
+  if (loading) {
+    return (null)
   }
 
 
-  return(
+  return (
     <div>
       <div className="player-header">
-        <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '20em' }}/>
+        <img src={`${state.player_overview_all.athlete.headshot.href}`} alt={"Player Headshot"} style={{ width: '20em' }} />
         <table className="player-info">
           <tbody>
             <tr>
@@ -97,20 +115,30 @@ export default function Player(props) {
           </tbody>
         </table>
       </div>
-      <hr/>
+      <hr />
       <div className="link-row">
-        <Link style={{textDecoration: 'none',
-        color: 'black'}} to={`${url}`}>Overview</Link>
-        <Link style={{textDecoration: 'none',
-        color: 'black'}} to={`${url}/stats`}>Stats</Link>
-        <Link style={{textDecoration: 'none',
-        color: 'black'}} to={`${url}/gamelog`}>Game Log</Link>
-        <Link style={{textDecoration: 'none',
-        color: 'black'}} to={`${url}/news`}>News</Link>
-        <Link style={{textDecoration: 'none',
-        color: 'black'}} to={`${url}/shotchart`}>Shot Chart</Link>
+        <Link style={{
+          textDecoration: 'none',
+          color: 'black'
+        }} to={`${url}`}>Overview</Link>
+        <Link style={{
+          textDecoration: 'none',
+          color: 'black'
+        }} to={`${url}/stats`}>Stats</Link>
+        <Link style={{
+          textDecoration: 'none',
+          color: 'black'
+        }} to={`${url}/gamelog`}>Game Log</Link>
+        <Link style={{
+          textDecoration: 'none',
+          color: 'black'
+        }} to={`${url}/news`}>News</Link>
+        <Link style={{
+          textDecoration: 'none',
+          color: 'black'
+        }} to={`${url}/shotchart`}>Shot Chart</Link>
       </div>
-      <hr/>
+      <hr />
 
 
 
@@ -128,17 +156,18 @@ export default function Player(props) {
           />
         </Route>
         <Route path={`${path}/gamelog`}>
-          <PlayerGameLog 
+          <PlayerGameLog
             gameLog={state.player_game_log}
           />
         </Route>
         <Route path={`${path}/news`}>
-          <PlayerNews 
+          <PlayerNews
             news={state.player_overview_stats.news}
           />
         </Route>
         <Route path={`${path}/shotchart`}>
-          <ShotChart />
+          <ShotChart shots={state.player_shots} />
+          <Heatmap shots={state.player_shots} />
         </Route>
       </Switch>
 

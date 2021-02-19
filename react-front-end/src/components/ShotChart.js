@@ -4,6 +4,12 @@ import './shotchart.css'
 
 export default function ShotChart(props) {
   let shotId = 0
+
+  if (props.shots["message"] == "NO DATA FOUND!") {
+    return (
+      <text className="error-message">NO DATA FOUND!</text>
+    )
+  }
   
   const shots = props.shots.resultSets['0'].rowSet.map(shot => {
     const scaledX = (shot[17] * 1.523 + 369)
@@ -13,7 +19,7 @@ export default function ShotChart(props) {
       shotId++
 
       return (
-        <g key={shotId} >
+        <g key={shotId} className="tooltip" >
           <circle
             cx={scaledX}
             cy={scaledY}
@@ -23,7 +29,8 @@ export default function ShotChart(props) {
             overflow="visible"
           >
           </circle>
-          <text x={scaledX} y={scaledY} textLength="300" >
+          <rect className="tooltiptext" x={scaledX} y={scaledY} width="300" height="80" fill="white" opacity="0.7" stroke="black"></rect>
+          <text className="tooltiptext" x={scaledX} y={scaledY} textLength="300" >
 
             <tspan x={scaledX} dy="1.2em">
               Period: {shot[7]}
@@ -39,14 +46,13 @@ export default function ShotChart(props) {
             </tspan>
 
           </text>
-          <rect x={scaledX} y={scaledY} width="300" height="80" fill="none" stroke="black"></rect>
         </g>
       )
     } else {
       shotId++
 
       return (
-        <g key={shotId}>
+        <g key={shotId} className="tooltip">
           <circle
             cx={scaledX}
             cy={scaledY}
@@ -56,7 +62,8 @@ export default function ShotChart(props) {
             overflow="visible"
           >
           </circle>
-          <text x={scaledX} y={scaledY} textLength="300" >
+          <rect className="tooltiptext" x={scaledX} y={scaledY} width="300" height="80" fill="white" opacity="0.7" stroke="black"></rect>
+          <text className="tooltiptext" x={scaledX} y={scaledY} textLength="300" >
 
             <tspan x={scaledX} dy="1.2em">
               Period: {shot[7]}
@@ -72,7 +79,6 @@ export default function ShotChart(props) {
             </tspan>
 
           </text>
-          <rect x={scaledX} y={scaledY} width="300" height="80" fill="none" stroke="black"></rect>
         </g>
       )
     }
@@ -104,9 +110,9 @@ export default function ShotChart(props) {
       <path d="M-30,-3.67394039744206e-15A30,30,0,1,1,30,0A30,30,0,1,0,-30,-3.67394039744206e-15Z" stroke="black" transform="translate(375,705)"></path>
       <path d="M-90,-1.1021821192326179e-14A90,90,0,1,1,90,0A90,90,0,1,0,-90,-1.1021821192326179e-14Z" stroke="black" transform="translate(375,705)"></path> */}
       <rect x="0" y="0" width="750" height="705" fill="none" stroke="black"></rect>
-
       <image href="https://cdn.discordapp.com/attachments/809499216354607190/811438397238411304/court.png" preserveAspectRatio="none" height="705" width="750"></image>
       {shots}
+      <span> HELLO HERE!</span>
     </svg>
   )
 }
