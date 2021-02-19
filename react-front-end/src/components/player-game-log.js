@@ -8,6 +8,8 @@ import {
 export default function PlayerGameLog(props) {
   const games = props.gameLog.events;
 
+  console.log(props.gameLog)
+
   const columns = [
     { field: 'id', hide: true},
     { field: 'atVs', headerName: 'atVs', width: 63 },
@@ -17,7 +19,7 @@ export default function PlayerGameLog(props) {
   for (let game in games) {
     rows.push({id: games[game].id, atVs:  games[game].atVs})
   }
-  console.log(rows);
+  // console.log(rows);
 
   const theme = createMuiTheme({
     typography: {
@@ -27,9 +29,11 @@ export default function PlayerGameLog(props) {
   return(
     <div className="player-stats">
       <h1>Player Game Log</h1>
-      <MuiThemeProvider theme={theme}>
-        <DataGrid rows={rows} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
-      </MuiThemeProvider>
+        <div style={{ height: 800, width: '100%', paddingTop: '15px'}}>
+          <MuiThemeProvider theme={theme}>
+            <DataGrid rows={rows} columns={columns} pageSize={20} checkboxSelection disableColumnMenu={true} checkboxSelection={false} />
+          </MuiThemeProvider>
+        </div>
     </div>
   )
 }
