@@ -5,16 +5,46 @@ import {
   createMuiTheme,
   MuiThemeProvider
 } from "@material-ui/core/styles";
+import { useParams } from 'react-router-dom'
 
 // const MyFormatter = function(props) {
 //   return <a href=
 // }
 
+
+
+const search = function(term, players) {
+  if (!term) {
+    return players
+  } else {
+    const results = []
+    players.map((player) => {
+
+      if((player.athlete.displayName).toLowerCase().indexOf((term).toLowerCase()) != -1){
+        results.push(player)
+      }
+
+    })
+    return results
+  }
+}
+
+
+
 export default function Player(props) {
+
+
+
 
   const [loading, setLoading] = useState(true)
 
   const [players, setPlayers] = useState({})
+
+  let { term } = useParams();
+
+
+
+
 
   useEffect(() => {axios.get('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=256&sort=general.avgMinutes%3Adesc')
   .then((response) => {
@@ -28,7 +58,20 @@ export default function Player(props) {
   if(loading){
     return(null)
   }
-  const allPlayers = players.players.athletes
+
+  const allPlayersSearched = search(term, players.players.athletes)
+
+  let allPlayers
+
+  if (!allPlayersSearched) {
+    console.log("allplayers searched falsy")
+    allPlayers = players.players.athlete;
+  } else {
+    console.log("allplayers searched truthy")
+    allPlayers = allPlayersSearched;
+  }
+
+
   const theme = createMuiTheme({
     typography: {
       fontSize: 12,

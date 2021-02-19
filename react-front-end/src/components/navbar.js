@@ -24,6 +24,7 @@ import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
 import './navbar.css'
 // Game Scores Dashboard
 import GameScores from './gameScores.js';
+import Search from './search'
 import {
   Link
 } from "react-router-dom";
@@ -174,6 +175,7 @@ export default function Navbar() {
           <Typography variant="h6" noWrap className={classes.title}>
             
           </Typography>
+          <Search />
           <Paper className={classes.paperAlt}> {currentMonth} {currentDay}, {currentYear}</Paper>
           <IconButton
             color="inherit"
