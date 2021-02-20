@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import './player.scss'
+
+import Paper from '@material-ui/core/Paper'
 
 
 
@@ -11,14 +12,19 @@ export default function Home(props) {
   const views = [];
 
   stories.map((story, index) => {
+
+
     views.push(
-      <div className="image container">
-        <img style={{ width: '100%'}} src={`${story.data.now[0].images[0].url}`}/>
-        <a className="bottom-left" href={`${story.data.now[0].links.web.href}`}>{story.data.now[0].description}</a>
-        
-      </div>)
+      <a style={{textDecoration: 'none', color: "white"}} href={`${story.data.now[0].links.web.href}`}>
+        <div style={{ height: '700px', width: '800px'}}>
+            <Paper  style={{backgroundImage: `url(${story.data.now[0].images[0].url})`, height: '400', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat'}}>
+              <div style={{height: '400px', color: 'white'}}>{story.data.now[0].description}</div>
+            </Paper>
+        </div>
+      </a>
+      )
   });
-  console.log(views)
+  // console.log(views)
 
   const [counter, setCounter] = useState(0);
   const [view, setView] = useState(views[counter])
@@ -37,8 +43,8 @@ export default function Home(props) {
   });
 
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <h1>Hello Colin</h1>
       <CSSTransition in={counter} appear timeout={5000} classNames="fade">
         <div>{view}</div>
       </CSSTransition>
