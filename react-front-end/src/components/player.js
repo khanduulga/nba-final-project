@@ -27,7 +27,8 @@ export default function Player(props) {
     player_game_log: [],
     player_playoff_stats: [],
     player_news: [],
-    player_shots: []
+    player_shots: [],
+    player_videos: []
   });
 
   useEffect(() => {
@@ -36,15 +37,18 @@ export default function Player(props) {
     const url2 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn`);
     const url3 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/gamelog?region=us&lang=en&contentorigin=espn`);
     const url4 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/stats?region=us&lang=en&contentorigin=espn&seasontype=3`);
-    let url5 = axios.get('/api/dummy')
+    let url5 = axios.get('/api/dummy');
+    let url6 = axios.get('/api/dummy');
 
 
     if (playerID.id == '1966') {
       console.log("HERE!")
-      url5 = axios.get('/api/shots?name=lebron');//1966
+      url5 = axios.get('/api/shots?name=lebron');
+      url6 = axios.get('/api/videos?name=lebron');//1966
     }
     if (playerID.id == 3975) {
-      url5 = axios.get('/api/shots?name=curry');//3975
+      url5 = axios.get('/api/shots?name=curry');
+      url6 = axios.get('/api/videos?name=curry');//3975
       console.log('HERE')
     }
     
@@ -56,7 +60,8 @@ export default function Player(props) {
       Promise.resolve(url2),
       Promise.resolve(url3),
       Promise.resolve(url4),
-      Promise.resolve(url5)
+      Promise.resolve(url5),
+      Promise.resolve(url6)
     ])
       .then((all) => {
         setState(prev => ({
@@ -66,7 +71,8 @@ export default function Player(props) {
           player_stats: all[2].data,
           player_game_log: all[3].data,
           player_playoff_stats: all[4].data,
-          player_shots: all[5].data
+          player_shots: all[5].data,
+          player_videos: all[6].data
         }))
         setLoading(false)
       })
@@ -169,7 +175,9 @@ export default function Player(props) {
           />
         </Route>
         <Route path={`${path}/shotchart`}>
-          <ShotChart shots={state.player_shots} />
+          <ShotChart
+           shots={state.player_shots} 
+           videos={state.player_videos}/>
           
         </Route>
           <Route path={`${path}/zonechart`}>

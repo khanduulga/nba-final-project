@@ -4,8 +4,8 @@ const BodyParser = require('body-parser');
 const PORT = 8080;
 const lebron_shots = require('./data/lebron_shots.json')
 const curry_shots = require('./data/curry_shots.json')
-const lebron_stats = require('./data/lebron_stats.json')
-const curry_stats = require('./data/curry_stats.json')
+const lebron_videos = require('./data/lebron_videos.json')
+const curry_videos = require('./data/curry_videos.json')
 const league_leaders = require('./data/league_leaders.json')
 const dummy_shots = require('./data/dummy_shots.json')
 
@@ -22,11 +22,11 @@ App.get('/api/shots', (req, res) =>
     res.json(curry_shots)
   }}
 )
-App.get('/api/stats', (req, res) =>
+App.get('/api/videos', (req, res) =>
   {if (req.query.name === "lebron") {
-    res.json(lebron_stats)
+    res.json(lebron_video)
   } else if (req.query.name === "curry") {
-    res.json(curry_stats)
+    res.json(curry_videos)
   }}
 )
 App.get('/api/leaders', (req, res) =>
