@@ -17,9 +17,9 @@
 }
 
 
-.shot-chart .tooltip:hover circle {
+/* .shot-chart .tooltip:hover circle {
   r: 5.5;
-}
+} */
 .shot-chart .tooltip:hover .tooltiptext {
   visibility: visible;
 }
