@@ -1,12 +1,8 @@
-.shot-chart .tooltip circle {
-  z-index: 0;
-}
 
 
 .shot-chart .tooltip .tooltiptext {
   visibility: hidden;
   position: absolute;
-  z-index: 25;
   background-color: black;
   color: #fff;
   text-align: center;

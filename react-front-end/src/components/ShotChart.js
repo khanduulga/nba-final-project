@@ -10,7 +10,7 @@ export default function ShotChart(props) {
       <text className="error-message">NO DATA FOUND!</text>
     )
   }
-  
+
   const shots = props.shots.resultSets['0'].rowSet.map(shot => {
     const scaledX = (shot[17] * 1.523 + 369)
     const scaledY = shot[18] * 1.6 + 62
@@ -27,25 +27,36 @@ export default function ShotChart(props) {
             fill="green"
             id="SHOT"
             overflow="visible"
+            tabIndex="1"
           >
+            <title>
+            <text>
+
+                <tspan x={scaledX} dy="1.2em">
+                  Period: {shot[7]}
+                </tspan>
+                {"\n"}
+
+                <tspan x={scaledX} dy="1.2em">
+                  Time Remaining: {shot[8]}min {shot[9]}s
+                </tspan>
+                {"\n"}
+
+                <tspan x={scaledX} dy="1.2em">
+                  Action Type: {shot[11]}
+                </tspan>
+                {"\n"}
+
+                <tspan x={scaledX} dy="1.2em">
+                  Shot Distance: {shot[16]}ft
+                </tspan>
+
+              </text>
+
+
+            </title>
           </circle>
-          <rect className="tooltiptext" x={scaledX} y={scaledY} width="300" height="80" fill="white" opacity="0.7" stroke="black"></rect>
-          <text className="tooltiptext" x={scaledX} y={scaledY} textLength="300" >
-
-            <tspan x={scaledX} dy="1.2em">
-              Period: {shot[7]}
-            </tspan>
-            <tspan x={scaledX} dy="1.2em">
-              Time Remaining: {shot[8]}min {shot[9]}s
-            </tspan>
-            <tspan x={scaledX} dy="1.2em">
-              Action Type: {shot[11]}
-            </tspan>
-            <tspan x={scaledX} dy="1.2em">
-              Shot Distance: {shot[16]}ft
-            </tspan>
-
-          </text>
+          
         </g>
       )
     } else {
@@ -61,24 +72,35 @@ export default function ShotChart(props) {
             id="SHOT"
             overflow="visible"
           >
+            <title>
+            <text>
+
+                <tspan x={scaledX} dy="1.2em">
+                  Period: {shot[7]}
+                </tspan>
+                {"\n"}
+
+                <tspan x={scaledX} dy="1.2em">
+                  Time Remaining: {shot[8]}min {shot[9]}s
+                </tspan>
+                {"\n"}
+
+                <tspan x={scaledX} dy="1.2em">
+                  Action Type: {shot[11]}
+                </tspan>
+                {"\n"}
+
+                <tspan x={scaledX} dy="1.2em">
+                  Shot Distance: {shot[16]}ft
+                </tspan>
+
+              </text>
+
+
+            </title>
+
           </circle>
-          <rect className="tooltiptext" x={scaledX} y={scaledY} width="300" height="80" fill="white" opacity="0.7" stroke="black"></rect>
-          <text className="tooltiptext" x={scaledX} y={scaledY} textLength="300" >
 
-            <tspan x={scaledX} dy="1.2em">
-              Period: {shot[7]}
-            </tspan>
-            <tspan x={scaledX} dy="1.2em">
-              Time Remaining: {shot[8]}min {shot[9]}s
-            </tspan>
-            <tspan x={scaledX} dy="1.2em">
-              Action Type: {shot[11]}
-            </tspan>
-            <tspan x={scaledX} dy="1.2em">
-              Shot Distance: {shot[16]}ft
-            </tspan>
-
-          </text>
         </g>
       )
     }
@@ -86,7 +108,7 @@ export default function ShotChart(props) {
 
 
   return (
-    <div style={{display: 'flex', justifyContent: 'center', paddingTop: '15px', paddingBottom: '15px'}}>
+    <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', paddingTop: '15px', paddingBottom: '15px' }}>
       <svg
         className="shot-chart"
         height="705"

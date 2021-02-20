@@ -136,6 +136,10 @@ export default function Player(props) {
           textDecoration: 'none',
           color: 'black'
         }} to={`${url}/shotchart`}>Shot Chart</Link>
+        <Link style={{
+          textDecoration: 'none',
+          color: 'black'
+        }} to={`${url}/zonechart`}>Zone Chart</Link>
       </div>
       <hr />
 
@@ -166,8 +170,12 @@ export default function Player(props) {
         </Route>
         <Route path={`${path}/shotchart`}>
           <ShotChart shots={state.player_shots} />
+          
+        </Route>
+          <Route path={`${path}/zonechart`}>
           <Heatmap shots={state.player_shots} />
         </Route>
+
       </Switch>
 
     </div>
