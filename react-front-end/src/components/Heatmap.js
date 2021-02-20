@@ -299,6 +299,7 @@ export default function Heatmap(props) {
 
 
   return (
+    <div style={{display: 'flex', flexDirection: "column", justifyContent: 'center', paddingTop: '15px', paddingBottom: '15px'}}>
     <svg
       className="zone-chart"
       height="705"
@@ -314,5 +315,6 @@ export default function Heatmap(props) {
 
       {zoneInfoBoxes}
     </svg>
+    </div>
   )
 }

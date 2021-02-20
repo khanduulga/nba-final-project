@@ -35,8 +35,8 @@ export default function App(props) {
   useEffect(() => {
     const url0 = axios.get('/api/shots?name=lebron')
     const url1 = axios.get('/api/shots?name=curry')
-    const url2 = axios.get('/api/stats?name=lebron')
-    const url3 = axios.get('/api/stats?name=curry')
+    const url2 = axios.get('/api/dummy')
+    const url3 = axios.get('/api/dummy')
     const url4 = axios.get('/api/leaders')
     const url5 = axios.get(`https://onefeed.fan.api.espn.com/apis/v3/cached/contentEngine/oneFeed/leagues/nba?source=ESPN.com`)
   
