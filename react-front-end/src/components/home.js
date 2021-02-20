@@ -12,19 +12,19 @@ export default function Home(props) {
   const views = [];
 
   stories.map((story, index) => {
-
-
     views.push(
       <a style={{textDecoration: 'none', color: "white"}} href={`${story.data.now[0].links.web.href}`}>
         <div style={{ height: '700px', width: '800px'}}>
             <Paper  style={{backgroundImage: `url(${story.data.now[0].images[0].url})`, height: '400', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat'}}>
-              <div style={{height: '400px', color: 'white'}}>{story.data.now[0].description}</div>
+              <div style={{height: '400px', color: 'white', display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}>
+                <p style={{backgroundColor: `rgba(108, 122, 137, 0.4)`, fontWeight: 'bold'}}>{story.data.now[0].description}</p>
+              </div>
             </Paper>
         </div>
       </a>
       )
   });
-  // console.log(views)
+
 
   const [counter, setCounter] = useState(0);
   const [view, setView] = useState(views[counter])
@@ -37,7 +37,7 @@ export default function Home(props) {
         setCounter(counter + 1)
       };
       setView(views[counter]);
-    }, 5000);
+    }, 2500);
 
     return () => clearInterval(interval);
   });
@@ -45,7 +45,7 @@ export default function Home(props) {
   return (
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <h1>Hello Colin</h1>
-      <CSSTransition in={counter} appear timeout={5000} classNames="fade">
+      <CSSTransition in={counter} appear timeout={2500} classNames="fade">
         <div>{view}</div>
       </CSSTransition>
     </div>

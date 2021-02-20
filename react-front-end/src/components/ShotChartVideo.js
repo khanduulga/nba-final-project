@@ -4,9 +4,8 @@ import {useParams} from 'react-router-dom';
 
 export default function ShotChartVideo(props) {
 
-  let shotId = useParams()
 
-  if(!shotId.shot) {
+  if(!props.videoUrl) {
     return (
       <h1>Select a Shot!</h1>
     )
@@ -14,7 +13,7 @@ export default function ShotChartVideo(props) {
   
   return (
     <video width="960" height="540" controls>
-        <source src={props.videoUrls[shotId.shot].murl} type="video/mp4"/>
+        <source src={props.videoUrl} type="video/mp4"/>
     </video>
   )
 }

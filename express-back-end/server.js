@@ -24,7 +24,7 @@ App.get('/api/shots', (req, res) =>
 )
 App.get('/api/videos', (req, res) =>
   {if (req.query.name === "lebron") {
-    res.json(lebron_video)
+    res.json(lebron_videos)
   } else if (req.query.name === "curry") {
     res.json(curry_videos)
   }}
