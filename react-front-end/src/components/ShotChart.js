@@ -21,17 +21,14 @@ export default function ShotChart(props) {
     videoElement.current && videoElement.current.load();
   }, [videoUrl])
  
-  const handleMadeShotClick = (shotId) => {
+  const handleShotClick = (shotId) => {
     const url = videoUrls[shotId].murl;
  
     setVideoUrl(url);
     toggleVideoModal();
   };
  
-  const handleMissedShotClick = () => {
-    // TODO:
-  }
- 
+
   const toggleVideoModal = () => {
     setVideoModalOpen(isOpen => !isOpen)
   }
@@ -49,7 +46,7 @@ export default function ShotChart(props) {
         key={index}
         className="tooltip"
         onClick={() => { 
-          shotWasMade ? handleMadeShotClick(index) : handleMissedShotClick();
+          handleShotClick(index);
         }}
       >
         <circle
