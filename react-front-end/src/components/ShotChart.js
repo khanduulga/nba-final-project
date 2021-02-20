@@ -10,6 +10,7 @@ export default function ShotChart(props) {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   // Creates a reference to the videoElement
   const videoElement = useRef();
+  console.log(videoElement)
  
   if (props.shots["message"] === "NO DATA FOUND!") {
     return <text className="error-message">NO DATA FOUND!</text>;
@@ -40,14 +41,14 @@ export default function ShotChart(props) {
     const scaledX = shot[17] * 1.523 + 369;
     const scaledY = shot[18] * 1.6 + 62;
  
-    const shotWasMade = shot[20] === 1; // easier to understand? "shotWasMade"
+    const shotWasMade = shot[20] === 1; // easier to understand "shotWasMade"
     const circleFill = shotWasMade ? "green" : "red"; // got rid of repeated code by using a ternary here
  
     return (
       <g
         key={index}
         className="tooltip"
-        onClick={() => { // TODO: still using index which works but isn't a great idea. better to use id of each shot and map that to the videoUrl with .find or something
+        onClick={() => { 
           shotWasMade ? handleMadeShotClick(index) : handleMissedShotClick();
         }}
       >
