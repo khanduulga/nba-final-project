@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     textEmphasis: 'bold',
     fontSize: 18,
-    border: 'solid 1px black',
+    border: 'solid 1px white',
     height: '4em'
   },
   chev: {

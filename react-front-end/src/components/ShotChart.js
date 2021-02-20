@@ -86,7 +86,7 @@ export default function ShotChart(props) {
 
 
   return (
-    <div style={{display: 'flex', justifyContent: 'center', paddingTop: '15px', paddingBottom: '15px'}}>
+    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '15px', paddingBottom: '15px'}}>
       <svg
         className="shot-chart"
         height="705"
