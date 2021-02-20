@@ -87,7 +87,7 @@ export default function PlayerStats(props) {
       <div className="averages" style={{ height: 750, width: '90%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
-            rows={avgRows} columns={avgColumns} autoPageSize={true} hideFooterPagination={true} 
+            rows={avgRows} columns={avgColumns} 
           />
         </MuiThemeProvider>
       </div>
@@ -95,7 +95,7 @@ export default function PlayerStats(props) {
       <div className="totals" style={{ height: 750, width: '80%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
-            rows={totalsRows} columns={totalsColumns} autoPageSize={true} hideFooterPagination={true} 
+            rows={totalsRows} columns={totalsColumns} 
           />
         </MuiThemeProvider>
       </div>
@@ -103,7 +103,7 @@ export default function PlayerStats(props) {
       <div className="misc" style={{ height: 750, width: '76%', paddingLeft: '15px', paddingBottom: '15px'}}>
         <MuiThemeProvider theme={theme}>
           <DataGrid
-            rows={miscRows} columns={miscColumns} autoPageSize={true} hideFooterPagination={true} 
+            rows={miscRows} columns={miscColumns}
           />
         </MuiThemeProvider>
       </div>

@@ -30,6 +30,8 @@ export default function Player(props) {
     player_shots: [],
     player_videos: []
   });
+  const [selected, setSelected] = useState(0)
+  
 
   useEffect(() => {
     const url0 = axios.get(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${playerID.id}/overview?region=us&lang=en&contentorigin=espn`);
@@ -122,30 +124,72 @@ export default function Player(props) {
       </div>
       <hr />
       <div className="link-row">
-        <Link style={{
-          textDecoration: 'none',
-          color: 'black'
-        }} to={`${url}`}>Overview</Link>
-        <Link style={{
-          textDecoration: 'none',
-          color: 'black'
-        }} to={`${url}/stats`}>Stats</Link>
-        <Link style={{
-          textDecoration: 'none',
-          color: 'black'
-        }} to={`${url}/gamelog`}>Game Log</Link>
-        <Link style={{
-          textDecoration: 'none',
-          color: 'black'
-        }} to={`${url}/news`}>News</Link>
-        <Link style={{
-          textDecoration: 'none',
-          color: 'black'
-        }} to={`${url}/shotchart`}>Shot Chart</Link>
-        <Link style={{
-          textDecoration: 'none',
-          color: 'black'
-        }} to={`${url}/zonechart`}>Zone Chart</Link>
+        <div 
+          className='bar-button' 
+          style={ (selected === 0) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(0)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}
+            to={`${url}`}>Overview</Link>
+        </div>
+        <div 
+          className='bar-button'
+          style={ (selected === 1) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(1)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}
+            to={`${url}/stats`}>Stats</Link>
+        </div>
+        <div 
+          className='bar-button' 
+          style={ (selected === 2) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(2)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}
+           to={`${url}/gamelog`}>Game Log</Link>
+        </div>
+        <div 
+          className='bar-button' 
+          style={ (selected === 3) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(3)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }} 
+            to={`${url}/news`}>News</Link>
+        </div>
+        <div 
+          className='bar-button' 
+          style={ (selected === 4) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '15px' } }>
+          <Link 
+            onClick={()=>setSelected(4)}
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }} 
+            to={`${url}/shotchart`}>Shot Chart</Link>
+        </div>
+        <div 
+          className='bar-button' 
+          style={ (selected === 5) ? {borderBottom: 'solid', borderBottomColor: 'blue', fontSize: '16px', fontWeight: 'bold'} : { fontSize: '13px' } }>
+          <Link
+            onClick={()=>setSelected(5)}     
+            style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}  
+            to={`${url}/zonechart`}>Zone Chart</Link>
+        </div>
       </div>
       <hr />
 

@@ -44,7 +44,7 @@ export default function Home(props) {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      <h1>Hello Colin</h1>
+      <h1>Homepage</h1>
       <CSSTransition in={counter} appear timeout={2500} classNames="fade">
         <div>{view}</div>
       </CSSTransition>
