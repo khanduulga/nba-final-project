@@ -80,8 +80,6 @@ export default function Player(props) {
       })
   }, [])
 
-
-
   if (loading) {
     return (null)
   }
@@ -117,7 +115,7 @@ export default function Player(props) {
             </tr>
             <tr>
               <th>Draft Info</th>
-              <td>2012: Rd 1, Pk 3 (WSH)</td>
+              <td>{state.player_overview_all.athlete.displayDraft}</td>
             </tr>
           </tbody>
         </table>
