@@ -18,9 +18,7 @@ export default function Home(props) {
   const views = [];
   
   const [counter, setCounter] = useState(0);
-  const [view, setView] = useState(views[counter]);
-  const [prevView, setPrevView] = useState(views[(counter === 0 ? 2 : counter - 1)]);
-  const [nextView, setNextView] = useState(views[(counter === 2 ? 0 : counter + 1)]);
+  
   
   stories.map((story, index) => {
     // console.log(counter, index)
@@ -38,6 +36,10 @@ export default function Home(props) {
       </a>
       )
   });
+
+  const [view, setView] = useState(views[counter]);
+  const [prevView, setPrevView] = useState(views[(counter === 0 ? 2 : counter - 1)]);
+  const [nextView, setNextView] = useState(views[(counter === 2 ? 0 : counter + 1)]);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -94,7 +96,7 @@ export default function Home(props) {
       </Link>
       </div>
 
-      <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: 'black', marginTop: 0}}>
+      <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: 'black', marginTop: 17}}>
         <CSSTransition in={counter} appear timeout={2500} classNames="fade">
           <div  style={{opacity: 0.4}}>{prevView}</div>
         </CSSTransition>
