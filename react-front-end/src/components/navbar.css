@@ -5,3 +5,9 @@ img {
 h2 {
   padding-left: 1em;
 }
+svg {
+  color: gold;
+}
+span {
+  color: white;
+}

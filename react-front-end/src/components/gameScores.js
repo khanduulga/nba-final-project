@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
+import Tilt from 'react-tilt';
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -11,21 +12,22 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'auto',
     padding: theme.spacing(0, 1),
     marginTop: -6,
-    height: 140,
+    height: 142,
     display: 'flex',
-    width: '93vw'
+    width: '94vw',
   },
   paper: {
     minWidth: '14em',
     margin: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
     padding: theme.spacing(2),
-    backgroundColor: '#949499',
+    backgroundColor: '#242428',
     color: 'white',
     textEmphasis: 'bold',
     fontSize: 15,
     boxShadow: '40px',
     borderRadius: '5px',
-    height: '7em'
+    height: '7em', 
+    filter: 'drop-shadow(-2px -2px 2px rgba(255, 255, 255, 0.8))',
   },
   paperAlt: {
     width: 100,
@@ -35,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     textEmphasis: 'bold',
     fontSize: 18,
-    border: 'solid 1px black',
-    height: '4em'
+    height: '4em',
+    filter: 'drop-shadow(-2px -2px 2px rgba(255, 255, 255, 0.8))',
   },
   chev: {
     marginTop: 29,
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   img: {
     width: '2em',
     verticalAlign: 'middle'
-  }
+  },
 }));
 
 export default function GameScores() {
@@ -73,9 +75,11 @@ export default function GameScores() {
   const mappedGames = currentGames.map(game => {
     return (
       // <Grid item xs={1.5}>
+      <Tilt className="Tilt" options={{ max : 20, perspective: 2000, scale: 1.02 }} style={{ height: '100%', width: '100%' }} >
         <Paper className={classes.paper}>
           <img className={classes.img} alt="awayLogo" src={`/team-logos/${game.awayTeam.teamTricode}.svg`} /> {game.awayTeam.teamTricode} {game.period > 0 ? game.awayTeam.score : null} {game.period > 0 ? null : "at"} <img className={classes.img} alt="homeLogo" src={`/team-logos/${game.homeTeam.teamTricode}.svg`} />{game.homeTeam.teamTricode} {game.period > 0 ? game.homeTeam.score : null} {game.gameStatusText}
         </Paper>
+      </Tilt>
       // </Grid>
     )
   })

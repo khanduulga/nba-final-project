@@ -1,6 +1,10 @@
 .App {
   text-align: center;
-  background-color: #1d1f24;
+  background-color: black;
+}
+
+html {
+  background-color: white;
 }
 
 .App-logo {
@@ -36,4 +40,8 @@
 .search {
   display: flex;
   justify-content: center;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: 'orange';
 }
