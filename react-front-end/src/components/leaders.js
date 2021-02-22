@@ -170,11 +170,11 @@ export default function Leaders(props) {
   const theme = createMuiTheme({
     typography: {
       fontSize: 12
-    }})
-  
+    }
+  })
 
   return (
-    <div style={{ height: 750, width: '96%', paddingLeft: '15px', marginBottom: '15px'}}>
+    <div style={{ height: 750, width: '96%', paddingLeft: '15px', marginBottom: '15px', backgroundColor: 'white'}}>
       <h1>League Leaders</h1>
       <MuiThemeProvider theme={theme}>
         <DataGrid rows={playersArray} columns={columns} pageSize={20} disableColumnMenu={true} checkboxSelection={false} />

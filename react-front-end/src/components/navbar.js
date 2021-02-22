@@ -30,7 +30,6 @@ import {
 } from "react-router-dom";
 
 
-
 const drawerWidth = 208;
 
 const useStyles = makeStyles((theme) => ({
@@ -64,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   drawerOpen: {
+    backgroundColor: '#282c34',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -74,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   drawerClose: {
+    backgroundColor: '#282c34',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -142,16 +143,12 @@ export default function Navbar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const d = new Date()
-  const dateString = JSON.stringify(d);
-  const months = {'01': "Jan", '02': "Feb", '03': "Mar", '04': "Apr", '05': "May", '06': "Jun", '07': "Jul", '08': "Aug", '09': "Sep", '10': "Oct", '11': "Nov", '12': "Dec",}
-  const currentDay = dateString.substring(9,11);
-  const currentYear = dateString.substring(1,5);
-  const monthString = dateString.substring(6,8);
+  const d = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+  const months = {'1': "Jan", '2': "Feb", '3': "Mar", '4': "Apr", '5': "May", '6': "Jun", '7': "Jul", '8': "Aug", '9': "Sep", '10': "Oct", '11': "Nov", '12': "Dec",}
+  const currentDay = d.substring(2,4);
+  const currentYear = d.substring(5, 9);
+  const monthString = d.substring(0,1);
   const currentMonth = months[monthString];
-  // console.log(currentHour);
-
-
 
   const handleDrawerOpen = () => {
     setOpen(true);
