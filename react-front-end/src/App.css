@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .App {
   text-align: center;
-  background-color: black;
+  background-color: white;
+  font-family: 'Quicksand', sans-serif;
 }
 
 html {
   background-color: white;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .App-logo {

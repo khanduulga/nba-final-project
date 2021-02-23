@@ -140,7 +140,7 @@ export default function Standings(props) {
   })
 
   return (
-    <div style={{ height: 750, width: '84%', paddingLeft: '65px', paddingBottom: '15px'}}>
+    <div style={{ height: 750, width: '89%', paddingLeft: '65px', paddingBottom: '15px'}}>
       <h1>2020-21 Season Standings</h1>
       <h2>Western Conference</h2>
       <MuiThemeProvider theme={theme}>

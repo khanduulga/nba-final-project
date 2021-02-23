@@ -4,6 +4,12 @@ import { Modal } from "@material-ui/core";
 import "./shotchart.css";
  
 export default function ShotChart(props) {
+
+  if (props.shots["message"] === "NO DATA FOUND!") {
+    return <text className="error-message">NO DATA FOUND!</text>;
+  }
+ 
+
   const { videoUrls } = props.videos.resultSets.Meta;
  
   const [videoUrl, setVideoUrl] = useState(`${videoUrls[40].murl}`);
@@ -12,10 +18,7 @@ export default function ShotChart(props) {
   const videoElement = useRef();
   console.log(videoElement)
  
-  if (props.shots["message"] === "NO DATA FOUND!") {
-    return <text className="error-message">NO DATA FOUND!</text>;
-  }
- 
+
   useEffect(() => {
     // We can use that reference to the video element to call .load() every time videoUrl changes
     videoElement.current && videoElement.current.load();

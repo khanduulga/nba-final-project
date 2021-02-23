@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import {
   Link
 } from "react-router-dom";
+import SearchIcon from '@material-ui/icons/Search';
 
 
 export default function Search(props) {
@@ -24,8 +25,8 @@ export default function Search(props) {
             }}
           />
         </div>
-        <Button variant="contained" style={{backgroundColor: '#311b92', color: 'gold', marginLeft: '10px', border: 'solid white', borderWidth: '1px'}}  href={`/players/${term}`}>
-        Search
+        <Button variant="contained" style={{backgroundColor: '#311b92', color: 'gold', marginLeft: '10px'}}  href={`/players/${term}`}>
+        <SearchIcon style={{fontSize: '28px'}}></SearchIcon>
         </Button>  
       </div>
     </div>

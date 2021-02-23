@@ -35,6 +35,7 @@ const drawerWidth = 208;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    fontFamily:'Roboto, sans-serif'
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   drawerOpen: {
-    backgroundColor: '#282c34',
+    backgroundColor: '#131313',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   drawerClose: {
-    backgroundColor: '#282c34',
+    backgroundColor: '#131313',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -118,18 +119,17 @@ const useStyles = makeStyles((theme) => ({
   home: {
     textDecoration: 'none',
     color: 'white',
+    fontFamily:'Roboto, sans-serif'
   },
   paperAlt: {
     maxWidth: 200,
     margin: `${theme.spacing(1)}px auto`,
     padding: theme.spacing(2),
-    backgroundColor: '#242429',
-    color: 'gold',
+    background: 'transparent',
     textEmphasis: 'bold',
     fontSize: 18,
-    border: 'solid white',
-    borderWidth: '1px',
-    marginRight: '18px'
+    marginRight: '18px',
+    color: 'gold'
   },
   link: {
     textDecoration: 'none',
