@@ -6,10 +6,11 @@ import {
   MuiThemeProvider
 } from "@material-ui/core/styles";
 import { useParams } from 'react-router-dom';
-
 // const MyFormatter = function(props) {
 //   return <a href=
 // }
+
+console.log("HERE")
 
 const search = function(term, players) {
   if (!term) {
@@ -39,6 +40,7 @@ export default function Player(props) {
 
   useEffect(() => {axios.get('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?region=us&lang=en&contentorigin=espn&isqualified=true&page=1&limit=256&sort=general.avgMinutes%3Adesc')
   .then((response) => {
+    console.log(response.data)
     setPlayers(prev => ({
       ...prev,
       players: response.data
@@ -71,7 +73,7 @@ export default function Player(props) {
   const columns = [
     { field: 'id', hide: true},
     {field: 'displayName', headerName: 'Name', width: 200, renderCell: (params) => {
-      return(<a style={{textDecoration: 'none', color: 'black'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '48px'}} src={params.row.img}/>{params.row.displayName}</a>)
+      return(<a style={{textDecoration: 'none', color: 'black'}} href={`/player/${params.row.id}`}><img style={{verticalAlign: 'middle', width: '48px'}} src={params.row.img} alt=""/>{params.row.displayName}</a>)
     }},
     {field: 'teamShortName', headerName: 'Teams'},
     {field: 'position', headerName: 'Position', width: 200}
@@ -83,7 +85,7 @@ export default function Player(props) {
     console.log(player);
     const playerObject = {
       id: player.athlete.id,
-      img: player.athlete.headshot.href,
+      img: player.athlete.headshot ? player.athlete.headshot.href : false,
       displayName: player.athlete.displayName,
       teamShortName: player.athlete.teamShortName,
       position: player.athlete.position.name
