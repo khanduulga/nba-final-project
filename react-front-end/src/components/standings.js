@@ -20,12 +20,11 @@ export default function Standings(props) {
       ...prev,
       leagueStandings: response.data
     }))
+    
   })}, [])
-  
+
   //Organize response data from ESPN
   const nba = leagueStandings.leagueStandings.children
-  console.log(nba)
-
   let westConf = {};
   let eastConf = {};
 
@@ -49,9 +48,11 @@ export default function Standings(props) {
     eastArray.push(eastStandings[eTeam])
   }
 
-  const finalWest = westArray[6];
-  const finalEast = eastArray[6];
 
+  const finalWest = westArray[7];
+  const finalEast = eastArray[7];
+
+  
   let formattedWest = [];
   let formattedEast = [];
 
