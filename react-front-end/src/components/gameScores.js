@@ -60,6 +60,8 @@ export default function GameScores() {
 
   const currentGames = state.games
 
+  console.log(state.games)
+
 
   const mappedGames = currentGames.map(game => {
     return (
@@ -78,7 +80,7 @@ export default function GameScores() {
       </React.Fragment>
     );
   }
-
+  
   return (
     <div className={classes.root}>
       {/* <Grid container spacing={1}> */}
