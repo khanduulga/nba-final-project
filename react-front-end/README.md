@@ -1,42 +1,56 @@
-# 🏀 NBA Final Project
+This project was bootstrapped with Create React App.
 
-_An interactive analytics web app that visualizes NBA and player data using with React.js (front-end) and Express (back-end)._
-A project made by Deon Leer, Colin Elsinga and Khanduulga Munkhbold in Feb 2021.
+Available Scripts
+In the project directory, you can run:
 
----
+npm start
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
 
-## 📸 Screenshots
+The page will reload if you make edits.
+You will also see any lint errors in the console.
 
-!["Home page"](https://github.com/celsinga/nba-dashboard/blob/master/react-front-end/public/Screenshots/Screen%20Shot%202021-03-01%20at%202.28.31%20PM.png)
- 
-![Player Stats](https://github.com/celsinga/nba-dashboard/blob/master/react-front-end/public/Screenshots/Screen%20Shot%202021-03-01%20at%202.29.24%20PM.png)
+npm test
+Launches the test runner in the interactive watch mode.
+See the section about running tests for more information.
 
-![Shot Chart Video](https://github.com/celsinga/nba-dashboard/blob/master/react-front-end/public/Screenshots/Screen%20Shot%202021-03-01%20at%202.29.34%20PM.png)
+npm run build
+Builds the app for production to the build folder.
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-![Leaderboard](https://github.com/celsinga/nba-dashboard/blob/master/react-front-end/public/Screenshots/Screen%20Shot%202021-03-01%20at%202.28.48%20PM.png)
+The build is minified and the filenames include the hashes.
+Your app is ready to be deployed!
 
----
+See the section about deployment for more information.
 
-## 🚀 Features
+npm run eject
+Note: this is a one-way operation. Once you eject, you can’t go back!
 
-- ✅ Current games and scoreboard using Material UI
-- 📈 Dynamic NBA player data display including shotchart and heatmap
-- 🗂️ Filter and search by team, player, or stat type
-- 🧠 Simple and clean UI for quick analysis
+If you aren’t satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
 
----
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## 🛠️ Setup
+You don’t have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-- install and downgrade to nvm @8.17.0 LTS -'nvm install 8.17.0'
--'nvm use 8.17.0'
+Learn More
+You can learn more in the Create React App documentation.
 
--install dependencies 'npm install' and 'npm start' in both front and back end folders
+To learn React, check out the React documentation.
 
+Code Splitting
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-## Dependencies
+Analyzing the Bundle Size
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
--material-ui/core -material-ui/data-grid -material-ui/icons -axios -node-sass -react -react-dom -react-material-ui-carousel -react-router -react-router-dom -react-scripts -react-tilt -react-transition-group -scss
+Making a Progressive Web App
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
--body-parser -express -nodemon
+Advanced Configuration
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
+Deployment
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+npm run build fails to minify
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
