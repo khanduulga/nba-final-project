@@ -74,7 +74,7 @@ export default function Heatmap(props) {
             <tspan x={30} dy="1.2em">
               Left Corner 3
             </tspan>
-            <tspan x={50} dy="1.2em" fontWeight="bold"> 
+            <tspan x={50} dy="1.2em" fontWeight="bold">
               {fgm}/{fga}
             </tspan>
             <tspan x={45} dy="1.2em">
@@ -107,7 +107,7 @@ export default function Heatmap(props) {
             <tspan x={635} dy="1.2em">
               Right Corner 3
             </tspan>
-            <tspan x={665} dy="1.2em" fontWeight="bold"> 
+            <tspan x={665} dy="1.2em" fontWeight="bold">
               {fgm}/{fga}
             </tspan>
             <tspan x={659} dy="1.2em">
@@ -141,7 +141,7 @@ export default function Heatmap(props) {
             <tspan x={345} dy="1.2em">
               Backcourt
             </tspan>
-            <tspan x={365} dy="1.2em" fontWeight="bold"> 
+            <tspan x={365} dy="1.2em" fontWeight="bold">
               {fgm}/{fga}
             </tspan>
             <tspan x={357} dy="1.2em">
@@ -175,7 +175,7 @@ export default function Heatmap(props) {
             <tspan x={315} dy="1.2em">
               Above the Break 3
             </tspan>
-            <tspan x={350} dy="1.2em" fontWeight="bold"> 
+            <tspan x={350} dy="1.2em" fontWeight="bold">
               {fgm}/{fga}
             </tspan>
             <tspan x={355} dy="1.2em">
@@ -209,7 +209,7 @@ export default function Heatmap(props) {
             <tspan x={190} dy="1.2em">
               Mid-Range
             </tspan>
-            <tspan x={203} dy="1.2em" fontWeight="bold"> 
+            <tspan x={203} dy="1.2em" fontWeight="bold">
               {fgm}/{fga}
             </tspan>
             <tspan x={199} dy="1.2em">
@@ -243,7 +243,7 @@ export default function Heatmap(props) {
             <tspan x={338} dy="1.2em">
               In The Paint
             </tspan>
-            <tspan x={355} dy="1.2em" fontWeight="bold"> 
+            <tspan x={355} dy="1.2em" fontWeight="bold">
               {fgm}/{fga}
             </tspan>
             <tspan x={353} dy="1.2em">
@@ -277,7 +277,7 @@ export default function Heatmap(props) {
             <tspan x={325} dy="1.2em">
               Restricted Area
             </tspan>
-            <tspan x={353} dy="1.2em" fontWeight="bold"> 
+            <tspan x={353} dy="1.2em" fontWeight="bold">
               {fgm}/{fga}
             </tspan>
             <tspan x={352} dy="1.2em">
@@ -299,22 +299,55 @@ export default function Heatmap(props) {
 
 
   return (
-    <div style={{display: 'flex', flexDirection: "column", justifyContent: 'center', paddingTop: '15px', paddingBottom: '15px'}}>
-    <svg
-      className="zone-chart"
-      height="705"
-      width="750"
-      overflow="visible"
+    <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', paddingTop: '15px', paddingBottom: '15px' }}>
+      <svg
+        className="zone-chart"
+        height="705"
+        width="750"
+        overflow="visible"
 
-      // preserveAspectRatio="xMidYMid meet"
-      viewBox="0 0 750 705"
-    >
-      <rect x="0" y="0" width="750" height="705" fill="none" stroke="black"></rect>
+        // preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 750 705"
+      >
+        <rect x="0" y="0" width="750" height="705" fill="none" stroke="black"></rect>
 
-      <image href="https://cdn.discordapp.com/attachments/809499216354607190/811438397238411304/court.png" preserveAspectRatio="none" height="705" width="750"></image>
+        <image href="https://cdn.discordapp.com/attachments/809499216354607190/811438397238411304/court.png" preserveAspectRatio="none" height="705" width="750"></image>
+        <rect x="0" y="0" width="750" height="705" fill="#fcebbd" />
 
-      {zoneInfoBoxes}
-    </svg>
+        <circle cx="375" cy="65" r="10.5" stroke="blue" stroke-width="2" fill="none" />
+
+        <line x1="320" y1="45" x2="430" y2="45" stroke="blue" stroke-width="3" />
+
+        <rect x="235" y="0" width="280" height="266" stroke="#555" fill="none" stroke-width="2" />
+
+        <line x1="235" y1="45" x2="255" y2="45" stroke="#555" stroke-width="2" />
+        <line x1="235" y1="90" x2="255" y2="90" stroke="#555" stroke-width="2" />
+        <line x1="235" y1="135" x2="255" y2="135" stroke="#555" stroke-width="2" />
+        <line x1="235" y1="180" x2="255" y2="180" stroke="#555" stroke-width="2" />
+
+        <line x1="495" y1="45" x2="515" y2="45" stroke="#555" stroke-width="2" />
+        <line x1="495" y1="90" x2="515" y2="90" stroke="#555" stroke-width="2" />
+        <line x1="495" y1="135" x2="515" y2="135" stroke="#555" stroke-width="2" />
+        <line x1="495" y1="180" x2="515" y2="180" stroke="#555" stroke-width="2" />
+
+        <circle cx="375" cy="266" r="98" stroke="#555" fill="none" stroke-width="2" />
+
+        <line x1="43.2" y1="0" x2="43.2" y2="133" stroke="#555" stroke-width="2" />
+        <line x1="706.8" y1="0" x2="706.8" y2="133" stroke="#555" stroke-width="2" />
+
+        <defs>
+          <clipPath id="bottomHalfClip">
+            <rect x="0" y="105" width="750" height="340" />
+          </clipPath>
+        </defs>
+        <circle cx="375" cy="105" r="332.5" stroke="#555" stroke-width="2" fill="none" clip-path="url(#bottomHalfClip)" />
+
+        <text x="375" y="650" text-anchor="middle" font-size="10" fill="#333">made by @khanduulgam</text>
+
+        <circle cx="375" cy="701" r="98" stroke="#555" fill="none" stroke-width="2" />
+
+        {zoneInfoBoxes}
+      </svg>
     </div>
   )
 }

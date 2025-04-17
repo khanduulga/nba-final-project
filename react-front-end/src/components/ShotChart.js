@@ -114,7 +114,7 @@ export default function ShotChart(props) {
             fill="none"
             stroke="black"
           ></rect>
-
+          
           <svg width="750" height="705" viewBox="0 0 750 705" xmlns="http://www.w3.org/2000/svg">
 
             <rect x="0" y="0" width="750" height="705" fill="#fcebbd" />
